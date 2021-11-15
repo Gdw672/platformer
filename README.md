@@ -1,3 +1,0 @@
-# platformer
-start platformer
-rewrwe
