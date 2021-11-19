@@ -12,6 +12,8 @@ public class MoveLeft : MonoBehaviour
     public void onDown()
     {
         Pressed = true;
+
+        JerkScript.testRotation = 0;
     }
 
     public void onUp()
