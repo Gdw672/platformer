@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class PlayerFastLeft : MonoBehaviour
 {
-    Vector2 impulseL = new Vector2(-70, 150);
-
+    Vector2 impulseL = new Vector2(-100, 180);
+    private Rigidbody2D player;
     Vector2 impulseR = new Vector2(70, 150);
+
+    private void Start()
+    {
+        player = GetComponent<Rigidbody2D>();
+    }
     void impulseLeft()
     {
-        GetComponent<Rigidbody2D>().AddForce(impulseL, ForceMode2D.Impulse);
+        player.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        player.velocity = new Vector2(0, 0);
+
+        player.AddForce(impulseL, ForceMode2D.Impulse);
     }
 
     void impulseRight()
     {
-        GetComponent<Rigidbody2D>().AddForce(impulseR, ForceMode2D.Impulse);
+        player.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        player.velocity = new Vector2(0, 0);
+
+        player.AddForce(impulseR, ForceMode2D.Impulse);
     } 
     private void OnCollisionEnter2D(Collision2D collision)
     {
