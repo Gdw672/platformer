@@ -11,7 +11,15 @@ namespace playerAndJump
 
 
         JumpScript Jump = new JumpScript();
-        
+
+        private void OnCollisionStay(Collision collision)
+        {
+            if(collision.gameObject.tag == "Ground")
+            {
+                sumJump = 1;
+            }
+        }
+
         void Start()
         {
            

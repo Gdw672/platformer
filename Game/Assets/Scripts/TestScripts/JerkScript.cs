@@ -1,110 +1,136 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class JerkScript : MonoBehaviour
+namespace playerAndJump
 {
-    private Rigidbody2D player;
-    public static int jerkSum = 1;
-    public static int testRotation = 1;
-    Vector2 stopJerk = new Vector2(0, -3);
+    public class JerkScript : MonoBehaviour
+    {
+        private Rigidbody2D player;
+        public static int jerkSum = 1;
+        public static int testRotation = 1;
+        Vector2 stopJerk = new Vector2(0, -3);
+        public Button goLeft;
+        public Button goRight;
+        public Button Jump;
 
-    private void Start()
-    {
-        player = GetComponent<Rigidbody2D>();
-    }
-    private IEnumerator jerkCorutine()
-    {
-        if (jerkSum == 0)
+
+        private void Start()
         {
-            yield return new WaitForSeconds(0.15f);
-
-            jerkSum = 1;
+            player = GetComponent<Rigidbody2D>();
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-
-        if(collision.gameObject.tag == "enemy")
+        private IEnumerator jerkCorutine()
         {
-            if (testRotation == 1)
+            if (jerkSum == 0)
             {
+                yield return new WaitForSeconds(0.15f);
 
-
-
-                StopAllCoroutines();
-
-                player.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-                player.velocity = new Vector2(0, 0);
-
-                player.AddForce(new Vector2(-90, 150), ForceMode2D.Impulse);
-            }
-            else
-            {
-                StopAllCoroutines();
-
-                player.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-                player.velocity = new Vector2(0, 0);
-
-                player.AddForce(new Vector2(90, 150), ForceMode2D.Impulse);
+                jerkSum = 1;
             }
         }
-    }
 
-   
-       
-    
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "enemy")
+            {
+                if (testRotation == 1)
+                {
+                    StopAllCoroutines();
 
-    private IEnumerator stopJerkCor()
-    {
-        yield return new WaitForSeconds(0.5f);
+                    player.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        player.constraints = RigidbodyConstraints2D.FreezeRotation;
+                    player.velocity = new Vector2(0, 0);
 
-        player.velocity = stopJerk;
+                    player.AddForce(new Vector2(-90, 150), ForceMode2D.Impulse);
 
-        print("go down");
-    }
+                    onButtons();
+                }
+                else
+                {
+                    StopAllCoroutines();
 
-    
-    
+                    player.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-    public void jerk()
-    {
-        Vector2 jerkPos = new Vector2(30, 0);
+                    player.velocity = new Vector2(0, 0);
 
-        if (testRotation == 0)
-            jerkPos = -jerkPos;
+                    player.AddForce(new Vector2(90, 150), ForceMode2D.Impulse);
 
-
-        if (jerkSum == 1)
-        { 
-            print("you do jerk");
-
-            StartCoroutine(stopJerkCor());
-
-            player.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-
-            player.velocity = jerkPos;
-
-            jerkSum = 0;
+                    onButtons();
+                }
+            }
         }
 
-        if(jerkSum == 0)
+        private IEnumerator stopJerkCor()
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            player.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            player.velocity = stopJerk;
+
+            onButtons();
+
+            print("go down");
+        }
+        public void jerk()
+        {
+            Vector2 jerkPos = new Vector2(30, 0);
+
+            if (testRotation == 0)
+                jerkPos = -jerkPos;
+
+
+            if (jerkSum == 1)
+            {
+                print("you do jerk");
+
+                StartCoroutine(stopJerkCor());
+
+
+                offButtons();
+
+                player.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+
+                player.velocity = jerkPos;
+
+                jerkSum = 0;
+            }
+
+            if (jerkSum == 0)
+            {
+
+                StartCoroutine(jerkCorutine());
+
+            }
+        }
+
+
+        void offButtons()
+        {
+            goLeft.GetComponent<MoveLeft>().enabled = false;
+
+            goRight.GetComponent<MoveRight>().enabled = false;
+
+            Jump.GetComponent<Button>().enabled = false;
+        }
+
+        void onButtons()
         {
 
-            StartCoroutine(jerkCorutine());
+            goLeft.GetComponent<MoveLeft>().enabled = true;
+
+            goRight.GetComponent<MoveRight>().enabled = true;
+
+            Jump.GetComponent<Button>().enabled = true;
+
+
 
         }
-    }
 
-   
+        private void Update()
+        {
 
-    private void Update()
-    {
+        }
     }
 }

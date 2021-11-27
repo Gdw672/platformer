@@ -2,32 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveRight : MonoBehaviour
+namespace playerAndJump
 {
 
-
-    public GameObject player;
-
-    bool Pressed = false;
-    public void onDown()
+    public class MoveRight : MonoBehaviour
     {
-        Pressed = true;
-
-        JerkScript.testRotation = 1;
-    }
-
-    public void onUp()
-    {
-        Pressed = false;
-    }
 
 
+        public GameObject player;
 
-    void Update()
-    {
-        if (Pressed && player != null)
+        bool Pressed = false;
+        public void onDown()
         {
-            player.transform.Translate(0.2f, 0, 0);
+            Pressed = true;
+
+            JerkScript.testRotation = 1;
+        }
+
+        public void onUp()
+        {
+            Pressed = false;
+        }
+
+
+
+        void Update()
+        {
+            if (Pressed && player != null)
+            {
+                player.transform.Translate(0.2f, 0, 0);
+            }
         }
     }
 }
