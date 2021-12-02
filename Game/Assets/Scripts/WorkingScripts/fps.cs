@@ -7,7 +7,7 @@ public class fps : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 70;
         QualitySettings.vSyncCount = 0;
     }
 

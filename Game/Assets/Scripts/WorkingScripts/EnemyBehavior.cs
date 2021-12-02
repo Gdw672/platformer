@@ -42,23 +42,15 @@ public class EnemyBehavior : MonoBehaviour
         if(player.position.x < transform.position.x)
         {
             physic.velocity = new Vector2(-speed, 0);
-
-           
         }
         else if(player.position.x > transform.position.x)
         {
             physic.velocity = new Vector2(speed, 0);
-           
-
         }
     }
-
-
-
     void stopHunting()
     {
         physic.velocity = new Vector2(0, 0);
-
     }
 }
 }

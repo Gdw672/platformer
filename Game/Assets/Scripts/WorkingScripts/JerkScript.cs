@@ -87,7 +87,6 @@ namespace playerAndJump
 
                 StartCoroutine(stopJerkCor());
 
-
                 offButtons();
 
                 player.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
@@ -104,8 +103,6 @@ namespace playerAndJump
 
             }
         }
-
-
         void offButtons()
         {
             goLeft.GetComponent<MoveLeft>().enabled = false;
@@ -117,15 +114,11 @@ namespace playerAndJump
 
         void onButtons()
         {
-
             goLeft.GetComponent<MoveLeft>().enabled = true;
 
             goRight.GetComponent<MoveRight>().enabled = true;
 
             Jump.GetComponent<Button>().enabled = true;
-
-
-
         }
 
         private void Update()
