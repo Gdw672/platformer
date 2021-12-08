@@ -19,12 +19,25 @@ using UnityEngine;
 
     public bool barier;
 
+    private bool testVector;
+
+    private bool testCor;
+    private bool afterKickPlayer;
+
+    private Vector2 fr = new Vector2(70, 50);
+
     private void Start()
     {
         physic = gameObject.GetComponent<Rigidbody2D>();
 
         barier = true;
-    }
+
+        testVector = true;
+
+        testCor = true;
+
+        afterKickPlayer = true;
+}
 
     
     private void Update()
@@ -37,11 +50,9 @@ using UnityEngine;
             {
                 if(barier == true)
                 startHunting();
-            } else
-            {
-                stopHunting();
-            }  
+            } 
         }
+        movement();
     }
 
     
@@ -52,10 +63,37 @@ using UnityEngine;
         StartCoroutine("createBullet");
     }
 
-   void stopHunting()
+    void movement()
     {
-        physic.velocity = new Vector2(0, 0);
+        StartCoroutine("testTimeForMove");
+        if(testVector == true && afterKickPlayer == true)
+        {
+            physic.velocity = new Vector2(3, 0);
+        }
+
+        if (testVector == false && afterKickPlayer == true)
+            physic.velocity = new Vector2(-3, 0);
     }
+
+    IEnumerator testTimeForMove()
+    {
+        if (testCor == true && afterKickPlayer == true)
+        {
+            testCor = false;
+
+            yield return new WaitForSeconds(2);
+
+            if (testVector == true)
+                testVector = false;
+            else
+                testVector = true;
+
+            testCor = true;
+
+            print(testCor);
+        }
+    }
+   
 
     IEnumerator createBullet()
     {
@@ -74,7 +112,38 @@ using UnityEngine;
         barier = true;
     }
 
-    
-    
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "KickPlayer")
+        {
+            afterKickPlayer = false;
+
+            StopCoroutine("testTimeForMove");
+
+            physic.velocity = new Vector2(0, 0);
+
+            physic.AddForce(fr, ForceMode2D.Impulse);
+
+            StartCoroutine("razreshenie");
+
+        }
+            
+    }
+
+
+    IEnumerator razreshenie()
+    {
+        yield return new WaitForSeconds(2f);
+
+        afterKickPlayer = true;
+
+        if (testCor == true)
+            testCor = false;
+        if (testCor == false)
+            testCor = true;
+
+
+        StartCoroutine("testTimeForMove");
+    }
 }
