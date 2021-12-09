@@ -1323,9 +1323,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1551851246}
+    - target: {fileID: 4880094042315096569, guid: c7f7710134d0af3419a651ac676eac3b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880094042315096569, guid: c7f7710134d0af3419a651ac676eac3b, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9131693468316963826, guid: c7f7710134d0af3419a651ac676eac3b, type: 3}
       propertyPath: m_Name
       value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131693468316963826, guid: c7f7710134d0af3419a651ac676eac3b, type: 3}
+      propertyPath: m_TagString
+      value: bullet
       objectReference: {fileID: 0}
     - target: {fileID: 9190138516124035633, guid: c7f7710134d0af3419a651ac676eac3b, type: 3}
       propertyPath: m_RootOrder

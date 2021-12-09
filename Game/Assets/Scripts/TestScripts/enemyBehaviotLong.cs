@@ -97,6 +97,8 @@ using UnityEngine;
 
     IEnumerator createBullet()
     {
+        GameObject clone;
+
         barier = false;
 
         System.Random randomTime = new System.Random();
@@ -105,9 +107,11 @@ using UnityEngine;
 
        yield return new WaitForSeconds(rnd);
 
-        Instantiate(bullet);
+       clone = GameObject.Instantiate(bullet);
 
-        bullet.transform.position = gameObject.transform.position;
+        clone.tag = "bullet";
+
+        clone.transform.position = gameObject.transform.position;
 
         barier = true;
     }

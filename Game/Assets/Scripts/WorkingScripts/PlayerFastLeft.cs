@@ -41,9 +41,27 @@ public class PlayerFastLeft : MonoBehaviour
             impulseLeft();
         }
 
+
+
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "bullet" && collision.gameObject.transform.position.x < gameObject.transform.position.x)
+        {
+            impulseRight();
 
+            Destroy(collision.gameObject);
+
+        }
+
+        if (collision.gameObject.tag == "bullet" && collision.gameObject.transform.position.x > gameObject.transform.position.x)
+        {
+            impulseLeft();
+
+            Destroy(collision.gameObject);
+        }
+    }
 
 
 }

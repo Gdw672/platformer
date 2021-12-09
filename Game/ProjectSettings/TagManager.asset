@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - KickPlayer
   - ret
+  - bullet
   layers:
   - Default
   - TransparentFX
