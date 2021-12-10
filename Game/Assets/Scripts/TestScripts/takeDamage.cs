@@ -21,7 +21,9 @@ namespace playerAndJump
 
         void Damage()
         {
-            hp -= 20;
+            print(hp);
+
+            hp -= 30;
 
             if (JerkScript.testRotation == 1)
             {

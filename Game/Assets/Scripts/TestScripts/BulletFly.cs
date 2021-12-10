@@ -8,6 +8,8 @@ public class BulletFly : MonoBehaviour
 
     private Rigidbody2D bullet;
 
+    private BoxCollider2D collider;
+
     bool testPositionPlayer = true;
 
     float sidePlayer;
@@ -16,24 +18,24 @@ public class BulletFly : MonoBehaviour
     {
         player = GameObject.Find("Player");
 
-        bullet =gameObject.GetComponent<Rigidbody2D>();
+        collider = gameObject.GetComponent<BoxCollider2D>();
+
+        bullet = gameObject.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if(testPositionPlayer == true)
+        if (testPositionPlayer == true)
         {
             test();
         }
 
-        if(bullet != null)
+        if (bullet != null)
         {
             fly();
         }
-
-        
+     
     }
-
 
     void fly()
     {
@@ -52,6 +54,14 @@ public class BulletFly : MonoBehaviour
         testPositionPlayer = false;
 
         sidePlayer = player.transform.position.x - transform.position.x;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "KickPlayer")
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

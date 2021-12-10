@@ -42,7 +42,7 @@ using UnityEngine;
     
     private void Update()
     {
-        if(player != null )
+        if (player != null && gameObject != null )
         {
             float destToPlayer = Vector2.Distance(transform.position, player.position);
 
@@ -111,7 +111,14 @@ using UnityEngine;
 
         clone.tag = "bullet";
 
-        clone.transform.position = gameObject.transform.position;
+        if(gameObject.transform.position.x < player.position.x )
+        {
+            clone.transform.position = new Vector2(gameObject.transform.localPosition.x + 1, gameObject.transform.localPosition.y);
+        }
+        if (gameObject.transform.position.x > player.position.x)
+        {
+            clone.transform.position = new Vector2(gameObject.transform.localPosition.x - 1, gameObject.transform.localPosition.y);
+        }
 
         barier = true;
     }

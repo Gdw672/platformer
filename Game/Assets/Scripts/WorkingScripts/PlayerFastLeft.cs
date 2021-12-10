@@ -8,48 +8,39 @@ public class PlayerFastLeft : MonoBehaviour
     private Rigidbody2D player;
     Vector2 impulseR = new Vector2(70, 150);
 
+    Vector2 impulseBullet = new Vector2(50, 75);
+
+    Vector2 impulseBulletLeft = new Vector2(-50, 75);
+
     private void Start()
     {
         player = GetComponent<Rigidbody2D>();
     }
-    void impulseLeft()
+    void impulse(Vector2 vector)
     {
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         player.velocity = new Vector2(0, 0);
 
-        player.AddForce(impulseL, ForceMode2D.Impulse);
+        player.AddForce(vector, ForceMode2D.Impulse);
     }
 
-    void impulseRight()
-    {
-        player.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-        player.velocity = new Vector2(0, 0);
-
-        player.AddForce(impulseR, ForceMode2D.Impulse);
-    } 
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "enemy" && collision.gameObject.transform.position.x < gameObject.transform.position.x)
         {
-            impulseRight();
+            impulse(impulseR);
         }
 
         if (collision.gameObject.tag == "enemy" && collision.gameObject.transform.position.x > gameObject.transform.position.x)
         {
-            impulseLeft();
+            impulse(impulseL);
         }
 
-
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "bullet" && collision.gameObject.transform.position.x < gameObject.transform.position.x)
+        if (collision.gameObject.tag == "bullet" && collision.gameObject.transform.position.x < gameObject.transform.position.x)
         {
-            impulseRight();
+            impulse(impulseBullet);
 
             Destroy(collision.gameObject);
 
@@ -57,11 +48,14 @@ public class PlayerFastLeft : MonoBehaviour
 
         if (collision.gameObject.tag == "bullet" && collision.gameObject.transform.position.x > gameObject.transform.position.x)
         {
-            impulseLeft();
+            impulse(impulseBulletLeft);
 
             Destroy(collision.gameObject);
         }
+
     }
+
+    
 
 
 }
