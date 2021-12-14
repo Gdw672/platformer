@@ -9,9 +9,20 @@ namespace playerAndJump
 
     {
 
+        private SpriteRenderer spriteRenderer;
+
         public GameObject player;
 
-        bool Pressed = false;
+      public static bool isGoLeft = false;
+
+
+      public static  bool Pressed = false;
+
+        private void Start()
+        {
+            spriteRenderer = player.GetComponent<SpriteRenderer>();
+        }
+
         public void onDown()
         {
             Pressed = true;
@@ -21,6 +32,8 @@ namespace playerAndJump
 
         public void onUp()
         {
+            isGoLeft = false;
+
             Pressed = false;
         }
 

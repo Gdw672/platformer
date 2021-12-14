@@ -11,8 +11,9 @@ namespace playerAndJump
 
         public Rigidbody2D player;
 
-
         public static int sumJump = 1;
+
+
 
 
         public void jump()
@@ -27,15 +28,11 @@ namespace playerAndJump
 
         public void realJump()
         {
-
-
             if (sumJump == 1 && player != null)
             {
 
                 jump();
             }
-
-
         }
 
        

@@ -7,11 +7,11 @@ namespace playerAndJump
 
     public class MoveRight : MonoBehaviour
     {
-
+        public static bool isGoRight;
 
         public GameObject player;
 
-        bool Pressed = false;
+     public  static bool Pressed = false;
         public void onDown()
         {
             Pressed = true;
@@ -21,6 +21,7 @@ namespace playerAndJump
 
         public void onUp()
         {
+
             Pressed = false;
         }
 
@@ -32,6 +33,7 @@ namespace playerAndJump
             {
                 player.transform.Translate(0.2f, 0, 0);
             }
+
         }
     }
 }

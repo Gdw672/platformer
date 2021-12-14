@@ -6,7 +6,7 @@ namespace playerAndJump
 {
     public class takeDamage : MonoBehaviour
     {
-        int hp = 100;
+       public int hp = 100;
 
         Vector2 vectorLeft = new Vector2(40, 15);
 
