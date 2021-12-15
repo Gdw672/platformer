@@ -18,7 +18,7 @@ namespace playerAndJump
 
         public void jump()
         {
-            player.velocity = new Vector3(0, 12, 0);
+            player.velocity = new Vector3(0, 16, 0);
 
             sumJump = 0;
 

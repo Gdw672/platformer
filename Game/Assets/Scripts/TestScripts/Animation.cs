@@ -17,7 +17,7 @@ namespace playerAndJump
         public GameObject Ground;
         public string currentState;
         private string currentAnimation;
-        private bool groundCheck, checkForStartRunning;
+        private bool groundCheck, checkForStartRunning, isNormalRun;
         private float distance;
 
         private void Start()
@@ -26,11 +26,24 @@ namespace playerAndJump
             playerBody = GetComponent<Rigidbody2D>();
             currentState = "Idle";
             setCharacterState(currentState);
+            isNormalRun = false;
         }
         
         private void Update()
         {
             MoveAnim();
+
+            if (MoveLeft.Pressed == true || MoveRight.Pressed == true || JumpScript.sumJump == 0 || groundCheck == true  || attackScript.isHit == true)
+            {
+                StopCoroutine("waitForIdle");
+            }
+
+            if (MoveLeft.Pressed == false && MoveRight.Pressed == false)
+            {
+                isNormalRun = false;
+
+                StopCoroutine("waitForNormalRun");
+            }
         }
 
         
@@ -38,7 +51,6 @@ namespace playerAndJump
         {
             if(animation.name.Equals(currentAnimation))
             {
-
                 return;
             }
 
@@ -63,8 +75,6 @@ namespace playerAndJump
             }
             else if(state.Equals("falling"))
             {
-                print("you are fall");
-
                 setAnimation(falling, true, 1f);
             }
             else if(state.Equals("firstHit"))
@@ -76,9 +86,14 @@ namespace playerAndJump
                 setAnimation(secondHit, false, 1f);
             }
 
+            else if(state.Equals("runStart"))
+            {
+                setAnimation(runStart, false, 1f);
+            }
+
             else if (state.Equals("Idle"))
             {
-                setAnimation(idle, true, 1f);
+                setAnimation(idle, false, 1f);
             }
         }
 
@@ -92,9 +107,11 @@ namespace playerAndJump
 
                 if (JerkScript.testRotation == 1)
                     transform.localScale = new Vector2(0.25f, 0.25f);
-                setCharacterState("run");
-                
-               
+
+              
+                StartCoroutine("waitForNormalRun");
+
+
             }
             if(JumpScript.sumJump == 0 && groundCheck == false)
             {
@@ -129,8 +146,13 @@ namespace playerAndJump
             {
                 setCharacterState("Idle");
             }
-            
-            
+
+          //  if (MoveLeft.Pressed == false && MoveRight.Pressed == false && JumpScript.sumJump != 0 && groundCheck == false && attackScript.isHit == false)
+          //  {
+          //     StartCoroutine("waitForIdle");
+          // }
+
+
 
         }
         private void OnCollisionEnter2D(Collision2D collision)
@@ -153,7 +175,26 @@ namespace playerAndJump
 
         }
 
-      
+        IEnumerator waitForIdle()
+        {
+            yield return new WaitForSeconds(6f);
+
+            setCharacterState("Idle");
+        }
+
+        IEnumerator waitForNormalRun()
+        {
+            
+            if(isNormalRun == false)
+            setCharacterState("runStart");
+
+            yield return new WaitForSeconds(0.2f);
+
+            setCharacterState("run");
+            isNormalRun = true;
+
+
+        }
 
     }
 
