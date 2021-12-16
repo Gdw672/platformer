@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2294071538261039565, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.5
+      value: -9.8
       objectReference: {fileID: 0}
     - target: {fileID: 2294071538261039565, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -574,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268626478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 71.2, y: -6.85, z: 0}
+  m_LocalPosition: {x: 10.1, y: -6.85, z: 0}
   m_LocalScale: {x: 1.0319, y: 4.9259, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -660,7 +660,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 26.67343
+  orthographic size: 9.894119
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -684,7 +684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.44, y: 4, z: -10}
+  m_LocalPosition: {x: -4.44, y: -6.7, z: -10}
   m_LocalScale: {x: 0.98604995, y: 1.4322138, z: 0.96199995}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1688,6 +1688,22 @@ PrefabInstance:
     - target: {fileID: 1037647350332859212, guid: 8dd0bdd310a554546b10314f2cd972d9, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037647350332859213, guid: 8dd0bdd310a554546b10314f2cd972d9, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1318779
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037647350332859213, guid: 8dd0bdd310a554546b10314f2cd972d9, type: 3}
+      propertyPath: m_Size.y
+      value: 1.77239
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037647350332859213, guid: 8dd0bdd310a554546b10314f2cd972d9, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.065939054
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037647350332859213, guid: 8dd0bdd310a554546b10314f2cd972d9, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.38619524
       objectReference: {fileID: 0}
     - target: {fileID: 1037647350332859214, guid: 8dd0bdd310a554546b10314f2cd972d9, type: 3}
       propertyPath: hit

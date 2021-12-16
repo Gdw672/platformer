@@ -45,9 +45,7 @@ namespace playerAndJump
                 isNormalRun = false;
 
                 StopCoroutine("waitForNormalRun");
-            }
-            print(currentAnimation);
-           
+            }           
         }
 
         
@@ -156,10 +154,6 @@ namespace playerAndJump
                 }
             }
 
-          
-
-
-
             if (MoveLeft.Pressed == false && MoveRight.Pressed == false && JumpScript.sumJump != 0 && groundCheck == false && attackScript.isHit == false && JerkScript.isJerk == false)
             {
                 setCharacterState("Idle");
@@ -169,9 +163,6 @@ namespace playerAndJump
           //  {
           //     StartCoroutine("waitForIdle");
           // }
-
-
-
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {

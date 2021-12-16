@@ -9,31 +9,11 @@ public class LanguageScript : MonoBehaviour
 {
     public static int testLanguage;
 
-    public Sprite exitEng;
+    public Sprite exitEng, efRus, efEng, musRus, musEng, invisibleRus, realRus, invisibleEng, realEng;
 
-    public Sprite efRus;
+    private Image mus, ef;
 
-    public Sprite efEng;
-
-    public Sprite musRus;
-
-    public Sprite musEng;
-
-    public Sprite invisibleRus;
-
-    public Sprite realRus;
-
-    public Sprite invisibleEng;
-
-    public Sprite realEng;
-
-    private Image mus;
-
-    private Image ef;
-
-    private Button eng;
-
-    private Button rus;
+    private Button eng , rus;
 
     private void Start()
     {
