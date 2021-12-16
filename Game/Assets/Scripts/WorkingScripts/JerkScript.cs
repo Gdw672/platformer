@@ -59,14 +59,6 @@ namespace playerAndJump
         public void jerk()
         {
 
-            StartCoroutine("jerkCorReal");
-          
-        }
-
-      IEnumerator jerkCorReal()
-        {
-            yield return new WaitForSeconds(0.1f);
-
             Vector2 jerkPos = new Vector2(30, 0);
 
             if (testRotation == 0)
@@ -87,7 +79,10 @@ namespace playerAndJump
 
                 isJerk = true;
             }
+
         }
+
+     
 
         private IEnumerator stopJerkCor()
         {
