@@ -1,14 +1,14 @@
 {
-"skeleton": {
-	"hash": "h9Y5u97SgJwqLMTTDoA0QP0XjiM",
-	"spine": "3.3",
-	"x": -702.83,
-	"y": 67.35,
-	"width": 1670.49,
-	"height": 2703.42,
-	"images": "./images/",
-	"audio": "C:/Users/IhateBilly/Desktop/для игоря"
-},
+	"skeleton": {
+		"hash": "h9Y5u97SgJwqLMTTDoA0QP0XjiM",
+		"spine": "3.8.33-beta",
+		"x": -702.83,
+		"y": 67.35,
+		"width": 1670.49,
+		"height": 2703.42,
+		"images": "./images/",
+		"audio": "C:/Users/IhateBilly/Desktop/для игоря"
+	},
 "bones": [
 	{ "name": "root" },
 	{
