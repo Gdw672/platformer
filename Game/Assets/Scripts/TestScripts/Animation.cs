@@ -12,12 +12,12 @@ namespace playerAndJump
     public class Animation : MonoBehaviour
     {
         public SkeletonAnimation skeletonAnimation;
-        public AnimationReferenceAsset idle, run, jump, falling, fallFin , runStart, firstHit, secondHit;
+        public AnimationReferenceAsset idle, run, jump, falling, fallFin , runStart, firstHit, secondHit , jerk;
         private Rigidbody2D playerBody;
         public GameObject Ground;
         public string currentState;
         private string currentAnimation;
-        private bool groundCheck, checkForStartRunning, isNormalRun;
+        private bool groundCheck, checkForStartRunning, isNormalRun, inAir;
         private float distance;
 
         private void Start()
@@ -27,6 +27,8 @@ namespace playerAndJump
             currentState = "Idle";
             setCharacterState(currentState);
             isNormalRun = false;
+
+            MoveAnim();
         }
         
         private void Update()
@@ -44,6 +46,8 @@ namespace playerAndJump
 
                 StopCoroutine("waitForNormalRun");
             }
+            print(currentAnimation);
+           
         }
 
         
@@ -85,17 +89,23 @@ namespace playerAndJump
             {
                 setAnimation(secondHit, false, 1f);
             }
-
-            else if(state.Equals("runStart"))
+            else if (state.Equals("jerk"))
             {
-                setAnimation(runStart, false, 1f);
+                setAnimation(jerk, true, 1f);
             }
+            
+
+            else if (state.Equals("runStart"))
+                {
+                    setAnimation(runStart, false, 1f);
+                }
 
             else if (state.Equals("Idle"))
-            {
-                setAnimation(idle, false, 1f);
-            }
+              {
+                    setAnimation(idle, false, 1f);
+              }
         }
+        
 
         public void MoveAnim()
         {
@@ -113,28 +123,32 @@ namespace playerAndJump
 
 
             }
-            if(JumpScript.sumJump == 0 && groundCheck == false)
+            if(JumpScript.sumJump == 0 && JerkScript.isJerk == false && playerBody.velocity.y > 0)
             {
                 setCharacterState("jump");
             }
 
-            if(playerBody.velocity.y < -0.1f)
+
+
+            if (playerBody.velocity.y < -0.1f)
             {
                 setCharacterState("falling");
             }
+            if (JerkScript.isJerk == true)
+            {
+                setCharacterState("jerk");
+            }
 
-
-           if(groundCheck == true)
+            if (groundCheck == true && JerkScript.isJerk == false)
             {
                 setCharacterState("fallFin");
             }
 
-           if(attackScript.isHit == true)
+           if(attackScript.isHit == true && JerkScript.isJerk == false)
             {
                 if(attackScript.testHitOf % 2 == 0 )
                 {
                     setCharacterState("firstHit");
-
                 }
                 if(attackScript.testHitOf % 2 != 0)
                 {
@@ -142,7 +156,11 @@ namespace playerAndJump
                 }
             }
 
-            if (MoveLeft.Pressed == false && MoveRight.Pressed == false && JumpScript.sumJump != 0 && groundCheck == false && attackScript.isHit == false)
+          
+
+
+
+            if (MoveLeft.Pressed == false && MoveRight.Pressed == false && JumpScript.sumJump != 0 && groundCheck == false && attackScript.isHit == false && JerkScript.isJerk == false)
             {
                 setCharacterState("Idle");
             }
@@ -195,9 +213,14 @@ namespace playerAndJump
 
 
         }
-
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if(collision.gameObject.tag == "Ground")
+            {
+                inAir = true;
+            }
+        }
     }
-
+}
     
 
-}

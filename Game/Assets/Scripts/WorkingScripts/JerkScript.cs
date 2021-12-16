@@ -10,6 +10,7 @@ namespace playerAndJump
         private Rigidbody2D player;
         public static int jerkSum = 1;
         public static int testRotation = 1;
+        public static bool isJerk;
         Vector2 stopJerk = new Vector2(0, -3);
         public Button goLeft;
         public Button goRight;
@@ -18,17 +19,10 @@ namespace playerAndJump
 
         private void Start()
         {
+            isJerk = false;
             player = GetComponent<Rigidbody2D>();
         }
-        private IEnumerator jerkCorutine()
-        {
-            if (jerkSum == 0)
-            {
-                yield return new WaitForSeconds(0.15f);
-
-                jerkSum = 1;
-            }
-        }
+       
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -61,18 +55,7 @@ namespace playerAndJump
             }
         }
 
-        private IEnumerator stopJerkCor()
-        {
-            yield return new WaitForSeconds(0.5f);
-
-            player.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-            player.velocity = stopJerk;
-
-            onButtons();
-
-            print("go down");
-        }
+       
         public void jerk()
         {
             Vector2 jerkPos = new Vector2(30, 0);
@@ -83,7 +66,7 @@ namespace playerAndJump
 
             if (jerkSum == 1)
             {
-                print("you do jerk");
+                jerkSum = 0;
 
                 StartCoroutine(stopJerkCor());
 
@@ -93,16 +76,37 @@ namespace playerAndJump
 
                 player.velocity = jerkPos;
 
-                jerkSum = 0;
+                isJerk = true;
             }
 
-            if (jerkSum == 0)
-            {
-
-                StartCoroutine(jerkCorutine());
-
-            }
+          
         }
+
+      
+
+        private IEnumerator stopJerkCor()
+        {
+            yield return new WaitForSeconds(0.5f);
+
+           
+
+            player.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            player.velocity = stopJerk;
+
+            isJerk = false;
+
+            onButtons();
+
+            yield return new WaitForSeconds(1f);
+
+            jerkSum = 1;
+
+            print("go down");
+        }
+
+
+        
         void offButtons()
         {
             goLeft.GetComponent<MoveLeft>().enabled = false;
@@ -121,9 +125,6 @@ namespace playerAndJump
             Jump.GetComponent<Button>().enabled = true;
         }
 
-        private void Update()
-        {
-
-        }
+        
     }
 }
