@@ -27,13 +27,12 @@ namespace playerAndJump
 
 
 
-        void Update()
+        private void FixedUpdate()
         {
             if (Pressed && player != null)
             {
                 player.transform.Translate(0.2f, 0, 0);
             }
-
         }
     }
 }

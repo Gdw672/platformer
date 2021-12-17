@@ -7,22 +7,20 @@ using Spine.Unity;
 namespace playerAndJump
 {
 
-    
+
 
     public class Animation : MonoBehaviour
     {
         public SkeletonAnimation skeletonAnimation;
-        public AnimationReferenceAsset idle, run, jump, falling, fallFin , runStart, firstHit, secondHit , jerk;
+        public AnimationReferenceAsset idleFromTime, idleDefoult, run, jump, falling, fallFin, runStart, firstHit, secondHit, hitOnRun, hitonAir, jerk;
         private Rigidbody2D playerBody;
         public GameObject Ground;
         public string currentState;
         private string currentAnimation;
-        private bool groundCheck, checkForStartRunning, isNormalRun, inAir;
-        private float distance;
+        private bool groundCheck, isNormalRun, inAir;
 
         private void Start()
         {
-            checkForStartRunning = true;
             playerBody = GetComponent<Rigidbody2D>();
             currentState = "Idle";
             setCharacterState(currentState);
@@ -30,12 +28,12 @@ namespace playerAndJump
 
             MoveAnim();
         }
-        
+
         private void Update()
         {
             MoveAnim();
 
-            if (MoveLeft.Pressed == true || MoveRight.Pressed == true || JumpScript.sumJump == 0 || groundCheck == true  || attackScript.isHit == true)
+            if (MoveLeft.Pressed == true || MoveRight.Pressed == true || JumpScript.sumJump == 0 || groundCheck == true || attackScript.isHit == true)
             {
                 StopCoroutine("waitForIdle");
             }
@@ -45,13 +43,20 @@ namespace playerAndJump
                 isNormalRun = false;
 
                 StopCoroutine("waitForNormalRun");
-            }           
+            }
+
+
+            if (JerkScript.testRotation == 0)
+                transform.localScale = new Vector2(-0.25f, 0.25f);
+
+            if (JerkScript.testRotation == 1)
+                transform.localScale = new Vector2(0.25f, 0.25f);
         }
 
-        
-        public void setAnimation(AnimationReferenceAsset animation , bool loop, float timeScale)
+
+        public void setAnimation(AnimationReferenceAsset animation, bool loop, float timeScale)
         {
-            if(animation.name.Equals(currentAnimation))
+            if (animation.name.Equals(currentAnimation))
             {
                 return;
             }
@@ -67,19 +72,19 @@ namespace playerAndJump
             {
                 setAnimation(run, true, 1f);
             }
-            else if(state.Equals("jump"))
+            else if (state.Equals("jump"))
             {
                 setAnimation(jump, false, 1f);
             }
-            else if(state.Equals("fallFin"))
+            else if (state.Equals("fallFin"))
             {
                 setAnimation(fallFin, false, 1.5f);
             }
-            else if(state.Equals("falling"))
+            else if (state.Equals("falling"))
             {
                 setAnimation(falling, true, 1f);
             }
-            else if(state.Equals("firstHit"))
+            else if (state.Equals("firstHit"))
             {
                 setAnimation(firstHit, false, 1f);
             }
@@ -91,50 +96,55 @@ namespace playerAndJump
             {
                 setAnimation(jerk, true, 1f);
             }
-            
+
+            else if (state.Equals("idleDefoult"))
+            {
+                setAnimation(idleDefoult, true, 1f);
+            }
+
+            else if (state.Equals("hitonAir"))
+            {
+                setAnimation(hitonAir, false, 1f);
+            }
+
+            else if (state.Equals("hitOnRun"))
+            {
+                setAnimation(hitOnRun, false, 1f);
+            }
 
             else if (state.Equals("runStart"))
-                {
-                    setAnimation(runStart, false, 1f);
-                }
+            {
+                setAnimation(runStart, false, 1f);
+            }
 
             else if (state.Equals("Idle"))
-              {
-                    setAnimation(idle, false, 1f);
-              }
+            {
+                setAnimation(idleFromTime, false, 1f);
+            }
         }
-        
+
 
         public void MoveAnim()
         {
-            
-            if ((MoveLeft.Pressed == true) || (MoveRight.Pressed == true ))
+
+            if ((MoveLeft.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false) || (MoveRight.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false))
             {
-                if(JerkScript.testRotation == 0)   
-                    transform.localScale = new Vector2(-0.25f, 0.25f);
-
-                if (JerkScript.testRotation == 1)
-                    transform.localScale = new Vector2(0.25f, 0.25f);
-
-              
                 StartCoroutine("waitForNormalRun");
-
-
             }
-            if(JumpScript.sumJump == 0 && JerkScript.isJerk == false && playerBody.velocity.y > 0)
+
+            if (JumpScript.sumJump == 0 && JerkScript.isJerk == false && playerBody.velocity.y > 0 && attackScript.isHit == false)
             {
                 setCharacterState("jump");
             }
 
-
-
-            if (playerBody.velocity.y < -0.1f)
-            {
-                setCharacterState("falling");
-            }
-            if (JerkScript.isJerk == true)
+            if (JerkScript.isJerk == true && (MoveRight.Pressed == false || MoveRight.Pressed == true || MoveLeft.Pressed == false || MoveLeft.Pressed == true))
             {
                 setCharacterState("jerk");
+            }
+
+            if (playerBody.velocity.y < -0.1f && attackScript.isHit == false)
+            {
+                setCharacterState("falling");
             }
 
             if (groundCheck == true && JerkScript.isJerk == false)
@@ -142,7 +152,17 @@ namespace playerAndJump
                 setCharacterState("fallFin");
             }
 
-           if(attackScript.isHit == true && JerkScript.isJerk == false)
+            if((MoveLeft.Pressed == true && attackScript.isHit == true && inAir == false && JerkScript.isJerk == false) || (MoveRight.Pressed == true && attackScript.isHit == true && inAir == false && JerkScript.isJerk == false))
+            {
+                setCharacterState("hitOnRun");
+            }
+
+            if(attackScript.isHit == true && JerkScript.isJerk == false && inAir == true)
+            {
+                setCharacterState("hitonAir");
+            }
+
+           if(attackScript.isHit == true && JerkScript.isJerk == false && inAir == false && MoveRight.Pressed == false && MoveLeft.Pressed == false)
             {
                 if(attackScript.testHitOf % 2 == 0 )
                 {
@@ -154,15 +174,12 @@ namespace playerAndJump
                 }
             }
 
-            if (MoveLeft.Pressed == false && MoveRight.Pressed == false && JumpScript.sumJump != 0 && groundCheck == false && attackScript.isHit == false && JerkScript.isJerk == false)
+            if (MoveLeft.Pressed == false && MoveRight.Pressed == false && JumpScript.sumJump != 0 && groundCheck == false && attackScript.isHit == false && JerkScript.isJerk == false && inAir == false)
             {
-                setCharacterState("Idle");
+                setCharacterState("idleDefoult");
             }
 
-          //  if (MoveLeft.Pressed == false && MoveRight.Pressed == false && JumpScript.sumJump != 0 && groundCheck == false && attackScript.isHit == false)
-          //  {
-          //     StartCoroutine("waitForIdle");
-          // }
+            
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -173,6 +190,16 @@ namespace playerAndJump
                 groundCheck = true;
 
                 StartCoroutine("landingTime");
+
+                inAir = false;
+            }
+        }
+
+        void OnCollisionExit2D(Collision2D other)
+        {
+            if(other.gameObject.tag == "Ground")
+            {
+                inAir = true;
             }
         }
 
@@ -204,13 +231,7 @@ namespace playerAndJump
 
 
         }
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            if(collision.gameObject.tag == "Ground")
-            {
-                inAir = true;
-            }
-        }
+       
     }
 }
     

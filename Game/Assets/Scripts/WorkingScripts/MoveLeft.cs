@@ -39,7 +39,7 @@ namespace playerAndJump
 
 
 
-        void Update()
+        private void FixedUpdate()
         {
             if (Pressed && player != null)
             {

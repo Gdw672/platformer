@@ -12,10 +12,8 @@ namespace playerAndJump
         public static int testRotation = 1;
         public static bool isJerk;
         Vector2 stopJerk = new Vector2(0, -3);
-        public Button goLeft;
-        public Button goRight;
-        public Button Jump;
-
+        public Button goLeft, goRight, Jump, Jerk;
+        
 
         private void Start()
         {
@@ -109,18 +107,22 @@ namespace playerAndJump
         
         void offButtons()
         {
-            goLeft.GetComponent<MoveLeft>().enabled = false;
+            Jerk.GetComponent<Button>().enabled = false;
 
-            goRight.GetComponent<MoveRight>().enabled = false;
+            goLeft.GetComponent<Button>().enabled = false;
+
+            goRight.GetComponent<Button>().enabled = false;
 
             Jump.GetComponent<Button>().enabled = false;
         }
 
         void onButtons()
         {
-            goLeft.GetComponent<MoveLeft>().enabled = true;
+            Jerk.GetComponent<Button>().enabled = true;
 
-            goRight.GetComponent<MoveRight>().enabled = true;
+            goLeft.GetComponent<Button>().enabled = true;
+
+            goRight.GetComponent<Button>().enabled = true;
 
             Jump.GetComponent<Button>().enabled = true;
         }

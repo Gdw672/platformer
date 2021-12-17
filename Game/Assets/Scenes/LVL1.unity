@@ -316,6 +316,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1865511292}
     - target: {fileID: 2189204294798411279, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
+      propertyPath: Jerk
+      value: 
+      objectReference: {fileID: 552025271}
+    - target: {fileID: 2189204294798411279, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
       propertyPath: Jump
       value: 
       objectReference: {fileID: 1167413051}
@@ -356,6 +360,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e3ebdc135cb0737489603f6c1c528a8c, type: 2}
     - target: {fileID: 2294071538261039561, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
+      propertyPath: hitOnRun
+      value: 
+      objectReference: {fileID: 11400000, guid: 572b31c17e39428499a47e239e8f007f, type: 2}
+    - target: {fileID: 2294071538261039561, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
+      propertyPath: hitonAir
+      value: 
+      objectReference: {fileID: 11400000, guid: 539e4ef180fa6e94b8886c7e7bc63e65, type: 2}
+    - target: {fileID: 2294071538261039561, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
       propertyPath: runStart
       value: 
       objectReference: {fileID: 11400000, guid: cbb2c0192f30566458b82463f84bbe0a, type: 2}
@@ -363,6 +375,14 @@ PrefabInstance:
       propertyPath: secondHit
       value: 
       objectReference: {fileID: 11400000, guid: 77415440c5c3dba4d971d7022e88352b, type: 2}
+    - target: {fileID: 2294071538261039561, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
+      propertyPath: idleDefoult
+      value: 
+      objectReference: {fileID: 11400000, guid: ee84ccdb1b9ec884b9b6634b49d4e190, type: 2}
+    - target: {fileID: 2294071538261039561, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
+      propertyPath: idleFromTime
+      value: 
+      objectReference: {fileID: 11400000, guid: cbd2e5a6430c5db428c2b75d0b6355d8, type: 2}
     - target: {fileID: 2294071538261039564, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
       propertyPath: m_Name
       value: Player
@@ -574,7 +594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268626478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.1, y: -6.85, z: 0}
+  m_LocalPosition: {x: 124.9, y: -6.85, z: 0}
   m_LocalScale: {x: 1.0319, y: 4.9259, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -660,7 +680,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.894119
+  orthographic size: 10.896915
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
