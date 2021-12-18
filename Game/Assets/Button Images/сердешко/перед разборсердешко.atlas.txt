@@ -1,0 +1,76 @@
+
+перед разборсердешко.png
+size: 625,191
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: true
+  xy: 317, 12
+  size: 22, 20
+  orig: 22, 20
+  offset: 0, 0
+  index: -1
+2
+  rotate: false
+  xy: 289, 8
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+3
+  rotate: true
+  xy: 253, 2
+  size: 32, 34
+  orig: 32, 34
+  offset: 0, 0
+  index: -1
+blueтрубка1
+  rotate: false
+  xy: 200, 4
+  size: 51, 30
+  orig: 51, 30
+  offset: 0, 0
+  index: -1
+blueтрубка2
+  rotate: false
+  xy: 541, 56
+  size: 82, 58
+  orig: 82, 58
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 200, 36
+  size: 192, 153
+  orig: 192, 153
+  offset: 0, 0
+  index: -1
+mys
+  rotate: true
+  xy: 394, 5
+  size: 184, 145
+  orig: 184, 145
+  offset: 0, 0
+  index: -1
+stroke
+  rotate: false
+  xy: 2, 10
+  size: 196, 179
+  orig: 196, 179
+  offset: 0, 0
+  index: -1
+трубка1
+  rotate: false
+  xy: 541, 4
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+трубка2
+  rotate: false
+  xy: 541, 116
+  size: 80, 73
+  orig: 80, 73
+  offset: 0, 0
+  index: -1
