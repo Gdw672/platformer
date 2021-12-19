@@ -9,6 +9,7 @@ TagManager:
   - KickPlayer
   - ret
   - bullet
+  - movingPlatform
   layers:
   - Default
   - TransparentFX

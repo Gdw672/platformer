@@ -4,31 +4,56 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class playerHp : MonoBehaviour
+namespace playerAndJump
 {
 
-    static public int hp = 100;
-
-    private void Update()
+    public class playerHp : MonoBehaviour
     {
 
-        if(playerHp.hp <= 0)
-        {
-            SceneManager.LoadScene(0);
+        static public float hp = 100;
+        static public bool isTakeDamage;
 
-            hp = 100;
+        private void Update()
+        {
+
+            if (hp <= 0)
+            {
+                SceneManager.LoadScene(0);
+
+                hp = 100;
+            }
+
         }
 
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "bullet")
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            hp -= 30;
+            if (collision.gameObject.tag == "bullet")
+            {
+                hp -= 25;
 
-            Destroy(collision.gameObject);
+                StartCoroutine(takeDamage());
+            }
+            if (collision.gameObject.tag == "enemy")
+            {
+             //   hp -= 30;
+                StartCoroutine(takeDamage());
+            }
         }
-    }
 
+        private void Start()
+        {
+            isTakeDamage = false;
+        }
+
+        IEnumerator takeDamage()
+        {
+            isTakeDamage = true;
+
+            yield return new WaitForSeconds(0.7f);
+
+            isTakeDamage = false;
+        }
+
+
+    }
 }

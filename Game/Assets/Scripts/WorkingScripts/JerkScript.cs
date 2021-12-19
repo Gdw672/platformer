@@ -28,27 +28,34 @@ namespace playerAndJump
             {
                 if (testRotation == 1)
                 {
+                    isJerk = false;
+
                     StopAllCoroutines();
 
                     player.constraints = RigidbodyConstraints2D.FreezeRotation;
 
                     player.velocity = new Vector2(0, 0);
 
-                    player.AddForce(new Vector2(-90, 150), ForceMode2D.Impulse);
+                    player.AddForce(new Vector2(-180, 0), ForceMode2D.Impulse);
 
                     onButtons();
+
+                    jerkSum = 1;
                 }
                 else
                 {
+                    isJerk = false;
+
                     StopAllCoroutines();
 
                     player.constraints = RigidbodyConstraints2D.FreezeRotation;
 
                     player.velocity = new Vector2(0, 0);
 
-                    player.AddForce(new Vector2(90, 150), ForceMode2D.Impulse);
+                    player.AddForce(new Vector2(180, 0), ForceMode2D.Impulse);
 
                     onButtons();
+                    jerkSum = 1;
                 }
             }
         }
@@ -100,18 +107,19 @@ namespace playerAndJump
 
             jerkSum = 1;
 
-            print("go down");
         }
 
 
         
         void offButtons()
         {
+
+
             Jerk.GetComponent<Button>().enabled = false;
 
-            goLeft.GetComponent<Button>().enabled = false;
+            goLeft.GetComponent<MoveLeft>().enabled = false;
 
-            goRight.GetComponent<Button>().enabled = false;
+            goRight.GetComponent<MoveRight>().enabled = false;
 
             Jump.GetComponent<Button>().enabled = false;
         }
@@ -120,9 +128,9 @@ namespace playerAndJump
         {
             Jerk.GetComponent<Button>().enabled = true;
 
-            goLeft.GetComponent<Button>().enabled = true;
+            goLeft.GetComponent<MoveLeft>().enabled = true;
 
-            goRight.GetComponent<Button>().enabled = true;
+            goRight.GetComponent<MoveRight>().enabled = true;
 
             Jump.GetComponent<Button>().enabled = true;
         }

@@ -41,11 +41,11 @@ public class BulletFly : MonoBehaviour
     {
         if (sidePlayer > 0)
         {
-            bullet.velocity = new Vector2(10, 0);
+            bullet.velocity = new Vector2(15, 0);
         }
         else
         {
-            bullet.velocity = new Vector2(-10, 0);
+            bullet.velocity = new Vector2(-15, 0);
         }
     }
 
