@@ -44,16 +44,23 @@ namespace playerAndJump
             }
         }
 
-
-
-
-        private void Update()
+        private void OnCollisionStay2D(Collision2D collision)
         {
+            if (collision.gameObject.tag == "Ground")
+            {
+                sumJump = 1;
+            }
+        }
 
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Ground")
+            {
+                sumJump = 0;
+            }
 
 
         }
-
     }
 }
  

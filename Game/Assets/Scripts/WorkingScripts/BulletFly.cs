@@ -16,6 +16,8 @@ public class BulletFly : MonoBehaviour
 
     void Start()
     {
+       
+
         player = GameObject.Find("Player");
 
         collider = gameObject.GetComponent<BoxCollider2D>();
