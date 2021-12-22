@@ -12,7 +12,12 @@ public class cameraScript : MonoBehaviour
     {
         playerPos = player.transform.position;
 
-        gameObject.transform.position = new Vector3(playerPos.x, gameObject.transform.position.y, gameObject.transform.position.z);
+
+
+        gameObject.transform.position = new Vector3(playerPos.x, gameObject.transform.position.y, gameObject.transform.position.z) ;
+        
+
+     
        
 
     }

@@ -1,0 +1,139 @@
+
+Враги.png
+size: 348,540
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+green1
+  rotate: false
+  xy: 2, 160
+  size: 202, 92
+  orig: 202, 92
+  offset: 0, 0
+  index: -1
+green2
+  rotate: false
+  xy: 239, 405
+  size: 107, 133
+  orig: 107, 133
+  offset: 0, 0
+  index: -1
+red1
+  rotate: true
+  xy: 206, 12
+  size: 202, 92
+  orig: 202, 92
+  offset: 0, 0
+  index: -1
+red2
+  rotate: true
+  xy: 207, 296
+  size: 107, 133
+  orig: 107, 133
+  offset: 0, 0
+  index: -1
+б1
+  rotate: false
+  xy: 46, 80
+  size: 76, 78
+  orig: 76, 78
+  offset: 0, 0
+  index: -1
+б2
+  rotate: true
+  xy: 46, 2
+  size: 76, 78
+  orig: 76, 78
+  offset: 0, 0
+  index: -1
+б3
+  rotate: false
+  xy: 124, 80
+  size: 76, 78
+  orig: 76, 78
+  offset: 0, 0
+  index: -1
+б4
+  rotate: true
+  xy: 126, 2
+  size: 76, 78
+  orig: 76, 78
+  offset: 0, 0
+  index: -1
+нш
+  rotate: false
+  xy: 2, 500
+  size: 235, 38
+  orig: 235, 38
+  offset: 0, 0
+  index: -1
+п1
+  rotate: false
+  xy: 300, 91
+  size: 42, 123
+  orig: 42, 123
+  offset: 0, 0
+  index: -1
+п2
+  rotate: true
+  xy: 207, 256
+  size: 38, 124
+  orig: 38, 124
+  offset: 0, 0
+  index: -1
+п3
+  rotate: true
+  xy: 207, 216
+  size: 38, 124
+  orig: 38, 124
+  offset: 0, 0
+  index: -1
+п4
+  rotate: false
+  xy: 2, 35
+  size: 42, 123
+  orig: 42, 123
+  offset: 0, 0
+  index: -1
+р
+  rotate: false
+  xy: 2, 438
+  size: 221, 60
+  orig: 221, 60
+  offset: 0, 0
+  index: -1
+ш
+  rotate: false
+  xy: 2, 254
+  size: 203, 182
+  orig: 203, 182
+  offset: 0, 0
+  index: -1
+ш1
+  rotate: true
+  xy: 300, 71
+  size: 18, 42
+  orig: 18, 42
+  offset: 0, 0
+  index: -1
+ш2
+  rotate: true
+  xy: 300, 71
+  size: 18, 42
+  orig: 18, 42
+  offset: 0, 0
+  index: -1
+ш3
+  rotate: true
+  xy: 300, 51
+  size: 18, 42
+  orig: 18, 42
+  offset: 0, 0
+  index: -1
+ш4
+  rotate: true
+  xy: 300, 51
+  size: 18, 42
+  orig: 18, 42
+  offset: 0, 0
+  index: -1

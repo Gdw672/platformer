@@ -29,13 +29,19 @@ namespace playerAndJump
         {
             if (collision.gameObject.tag == "bullet")
             {
-                hp -= 25;
+                hp -= 20;
 
                 StartCoroutine(takeDamage());
             }
             if (collision.gameObject.tag == "enemy")
             {
-             //   hp -= 30;
+               hp -= 30;
+                StartCoroutine(takeDamage());
+            }
+
+            if(collision.gameObject.tag == "Suiside")
+            {
+                hp -= 50;
                 StartCoroutine(takeDamage());
             }
         }

@@ -53,6 +53,16 @@ public class PlayerFastLeft : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
+        if (collision.gameObject.tag == "Suiside" && collision.gameObject.transform.position.x < gameObject.transform.position.x)
+        {
+            impulse(impulseR);
+        }
+
+        if (collision.gameObject.tag == "Suiside" && collision.gameObject.transform.position.x > gameObject.transform.position.x)
+        {
+            impulse(impulseL);
+        }
+
     }
 
     

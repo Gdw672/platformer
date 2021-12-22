@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace playerAndJump
+
 {
     public class takeDamage : MonoBehaviour
     {
+        protected internal bool isDeath;
+
        public int hp = 100;
 
         Vector2 vectorLeft = new Vector2(40, 15);
@@ -21,7 +24,7 @@ namespace playerAndJump
 
         void Damage()
         {
-            print(hp);
+           
 
             hp -= 30;
 
@@ -41,11 +44,17 @@ namespace playerAndJump
             {
                 Damage();
 
-                if (hp <= 0)
-                {
-                    Destroy(gameObject);
-                }
+                
             }
         }
+
+        private void Update()
+        {
+            if(hp <=  0)
+            {
+                isDeath = true;
+            }
+        }
+
     }
 }
