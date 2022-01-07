@@ -15,6 +15,8 @@ public class EnemyBehavior : MonoBehaviour
 
       protected internal  bool isHunt;
 
+        public GameObject playerGO;
+
 
 
     private void Start()
@@ -22,10 +24,15 @@ public class EnemyBehavior : MonoBehaviour
             isHunt = false;
 
             physic = GetComponent<Rigidbody2D>();
+
+            
+           
     }
 
     private void Update()
     {
+            
+
             if (player != null)
             {
 
@@ -34,6 +41,8 @@ public class EnemyBehavior : MonoBehaviour
                 if (destToPlayer < agroDistance)
                 {
                     startHunting();
+                    testOop();
+
                 }
                 else
                 {
@@ -45,8 +54,10 @@ public class EnemyBehavior : MonoBehaviour
     {
             isHunt = true;
 
+
         if(player.position.x < transform.position.x)
         {
+                
 
             physic.velocity = new Vector2(-speed, 0);
         }
@@ -60,5 +71,11 @@ public class EnemyBehavior : MonoBehaviour
             isHunt = false;
         physic.velocity = new Vector2(0, 0);
     }
+
+        void testOop()
+        {
+            playerGO.GetComponent<playerHp>().realHp -= 10;
+        }
+
 }
 }

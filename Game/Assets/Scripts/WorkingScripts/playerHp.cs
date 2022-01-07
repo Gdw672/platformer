@@ -10,6 +10,8 @@ namespace playerAndJump
     public class playerHp : MonoBehaviour
     {
 
+        protected internal float realHp = 10;
+
         static public float hp = 100;
         static public bool isTakeDamage;
 
@@ -22,7 +24,7 @@ namespace playerAndJump
 
                 hp = 100;
             }
-
+            print(realHp);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
