@@ -5,12 +5,12 @@ using System.Threading;
 
 namespace playerAndJump
 {
-    public class oveLeft : MonoBehaviour
+    public class MoveLeft : MonoBehaviour
 
     {
 
-        private SpriteRenderer spriteRenderer;
 
+        int tesr;
         public GameObject player;
 
       public static bool isGoLeft = false;
@@ -20,7 +20,6 @@ namespace playerAndJump
 
         private void Start()
         {
-            spriteRenderer = player.GetComponent<SpriteRenderer>();
         }
 
         public void onDown()
@@ -37,7 +36,7 @@ namespace playerAndJump
             Pressed = false;
         }
 
-        
+
 
         private void FixedUpdate()
         {

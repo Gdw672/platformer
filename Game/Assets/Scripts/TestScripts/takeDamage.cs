@@ -52,6 +52,7 @@ namespace playerAndJump
         {
             if(hp <=  0)
             {
+                enemyBody.isKinematic = true;
                 isDeath = true;
             }
         }

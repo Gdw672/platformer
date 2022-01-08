@@ -188,6 +188,5 @@ namespace playerAndJump
 
             isShot = false;
         }
-
     }
 }

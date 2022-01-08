@@ -41,7 +41,7 @@ public class EnemyBehavior : MonoBehaviour
                 if (destToPlayer < agroDistance)
                 {
                     startHunting();
-                    testOop();
+                   
 
                 }
                 else
@@ -72,10 +72,7 @@ public class EnemyBehavior : MonoBehaviour
         physic.velocity = new Vector2(0, 0);
     }
 
-        void testOop()
-        {
-            playerGO.GetComponent<playerHp>().realHp -= 10;
-        }
+        
 
 }
 }

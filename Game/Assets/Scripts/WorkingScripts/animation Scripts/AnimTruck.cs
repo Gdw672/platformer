@@ -22,9 +22,7 @@ namespace playerAndJump {
 
         private void Update()
         {
-            isHit = gameObject.GetComponent<enemyBehaviotLong>().afterKickPlayer;
-
-            isShot = gameObject.GetComponent<enemyBehaviotLong>().isShot;
+           
 
             hp = gameObject.GetComponent<takeDamage>().hp;
 
@@ -59,7 +57,7 @@ namespace playerAndJump {
             }
             else if(state.Equals("shoot"))
             {
-                setAnimation(shoot, false, 1f);
+                setAnimation(shoot, false, 2f);
             }
             else if (state.Equals("death"))
             {
@@ -73,35 +71,40 @@ namespace playerAndJump {
 
         public void moveAnim()
         {
-            if (isHit == true && isShot == false && isDeath == false)
-            {
-                setCharacterState("run");
-            }
-
-            else if (isHit == true && isShot == true && isDeath == false)
-            {
+            isDeath = GetComponent<takeDamage>().isDeath;
+            isHit = GetComponent<NewEnemyBehaviorLong>().isKick;
+            isShot = GetComponent<NewEnemyBehaviorLong>().shot;
+               if (isShot == true && isDeath == false)
+               {
                 setCharacterState("shoot");
-            }
-
-            if(isHit == false && isDeath == false)
-            {
+               }
+               else if (isHit == true && isDeath == false)
+               { 
                 setCharacterState("takeDamage");
-            }
-            else if(isDeath == true)
-            {
+               }
+               else if(isDeath == true)
+               {
                 StartCoroutine(startDeath());
-            }
+
+                }else
+                {
+                setCharacterState("run");
+                }
+            
+
+           
         }
 
         IEnumerator startDeath()
         {
-            
             setCharacterState("death");
 
             yield return new WaitForSeconds(0.5f);
 
             Destroy(gameObject);
         }
+
+        
 
     }
 }

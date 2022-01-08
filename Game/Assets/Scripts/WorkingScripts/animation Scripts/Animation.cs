@@ -16,7 +16,8 @@ namespace playerAndJump
         private Rigidbody2D playerBody;
         public string currentState;
         private string currentAnimation;
-        private bool groundCheck, isNormalRun, inAir;
+        private bool groundCheck, isNormalRun;
+        protected internal bool inAir;
 
         private void Start()
         {
@@ -32,12 +33,12 @@ namespace playerAndJump
         {
             MoveAnim();
 
-            if (MoveLeft.Pressed == true || MoveRight.Pressed == true || JumpScript.sumJump == 0 || groundCheck == true || attackScript.isHit == true)
+            if (moveLeft.Pressed == true || moveRight.Pressed == true || JumpScript.sumJump == 0 || groundCheck == true || attackScript.isHit == true)
             {
                 StopCoroutine("waitForIdle");
             }
 
-            if (MoveLeft.Pressed == false && MoveRight.Pressed == false)
+            if (moveLeft.Pressed == false && moveRight.Pressed == false)
             {
                 isNormalRun = false;
 
@@ -133,7 +134,7 @@ namespace playerAndJump
             if (playerHp.isTakeDamage == false)
             {
 
-                if ((MoveLeft.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false) || (MoveRight.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false))
+                if ((moveLeft.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false) || (moveRight.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false))
                 {
                     setCharacterState("run");
                 }
@@ -158,7 +159,7 @@ namespace playerAndJump
                     setCharacterState("fallFin");
                 }
 
-                if ((MoveLeft.Pressed == true && attackScript.isHit == true && inAir == false && JerkScript.isJerk == false) || (MoveRight.Pressed == true && attackScript.isHit == true && inAir == false && JerkScript.isJerk == false))
+                if ((moveLeft.Pressed == true && attackScript.isHit == true && inAir == false && JerkScript.isJerk == false) || (moveRight.Pressed == true && attackScript.isHit == true && inAir == false && JerkScript.isJerk == false))
                 {
                     setCharacterState("hitOnRun");
                 }
@@ -168,7 +169,7 @@ namespace playerAndJump
                     setCharacterState("hitonAir");
                 }
 
-                if (attackScript.isHit == true && JerkScript.isJerk == false && inAir == false && MoveRight.Pressed == false && MoveLeft.Pressed == false)
+                if (attackScript.isHit == true && JerkScript.isJerk == false && inAir == false && moveRight.Pressed == false && moveLeft.Pressed == false)
                 {
                     if (attackScript.testHitOf % 2 == 0)
                     {
@@ -180,7 +181,7 @@ namespace playerAndJump
                     }
                 }
 
-                if (MoveLeft.Pressed == false && MoveRight.Pressed == false && JumpScript.sumJump != 0 && groundCheck == false && attackScript.isHit == false && JerkScript.isJerk == false && inAir == false)
+                if (moveLeft.Pressed == false && moveRight.Pressed == false && JumpScript.sumJump != 0 && groundCheck == false && attackScript.isHit == false && JerkScript.isJerk == false && inAir == false)
                 {
                     setCharacterState("idleDefoult");
                 }
@@ -194,7 +195,7 @@ namespace playerAndJump
         {
             if (collision.gameObject.tag == "Ground")
             {
-                if(MoveRight.Pressed == false && MoveLeft.Pressed == false)
+                if(moveRight.Pressed == false && moveLeft.Pressed == false)
 
                 groundCheck = true;
 

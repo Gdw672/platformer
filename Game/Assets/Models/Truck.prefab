@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 7885747319571145617}
   - component: {fileID: 7885747319571145616}
   - component: {fileID: 7885747319571145623}
-  - component: {fileID: 7885747319571145622}
   m_Layer: 0
   m_Name: Truck
   m_TagString: enemy
@@ -183,20 +182,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
---- !u!114 &7885747319571145622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7885747319571145631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff25b13472c2e8a44ab20222cf7f02c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 10
-  agroDistance: 15
-  bullet: {fileID: 4687599646689505523, guid: 401bcb0fe7582804490720a5cf15fc86, type: 3}
-  barier: 0
