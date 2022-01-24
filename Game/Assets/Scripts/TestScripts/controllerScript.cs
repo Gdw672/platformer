@@ -28,6 +28,8 @@ namespace playerAndJump
             moveRight.onUp();
         }
 
+
+        
        
 
         private void FixedUpdate()
@@ -42,10 +44,12 @@ namespace playerAndJump
                 gameObject.transform.Translate(0.2f, 0, 0);
             }
         }
-      
+
+       
+
     }
 
-
+   
 
 
     public class moveLeft : MonoBehaviour

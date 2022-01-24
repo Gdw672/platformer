@@ -50,7 +50,7 @@ public class EnemyBehavior : MonoBehaviour
                 }
             }
     }
-   public void startHunting()
+   public virtual void startHunting()
     {
             isHunt = true;
 
@@ -66,7 +66,7 @@ public class EnemyBehavior : MonoBehaviour
             physic.velocity = new Vector2(speed, 0);
         }
     }
-    void stopHunting()
+  public virtual void stopHunting()
     {
             isHunt = false;
         physic.velocity = new Vector2(0, 0);

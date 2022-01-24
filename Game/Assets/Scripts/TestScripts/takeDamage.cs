@@ -22,11 +22,11 @@ namespace playerAndJump
             enemyBody = gameObject.GetComponent<Rigidbody2D>();
         }
 
-        void Damage()
+        void Damage(int damage)
         {
            
 
-            hp -= 30;
+            hp -= damage;
 
             if (JerkScript.testRotation == 1)
             {
@@ -42,9 +42,21 @@ namespace playerAndJump
         {
             if (collision.gameObject.tag == "KickPlayer")
             {
-                Damage();
+                Damage(30);        
+            }
+            if (collision.gameObject.tag == "strongAttack")
+            {
+                Damage(50);
+            }
+           
+        }
 
-                
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "bulletPlayer")
+            {
+                Damage(35);
+                Destroy(collision.gameObject);
             }
         }
 

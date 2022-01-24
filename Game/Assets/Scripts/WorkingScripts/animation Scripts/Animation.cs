@@ -122,7 +122,7 @@ namespace playerAndJump
                 setAnimation(runStart, false, 1f);
             }
 
-            else if (state.Equals("Idle"))
+            else if (state.Equals("idleFromTime"))
             {
                 setAnimation(idleFromTime, false, 1f);
             }
@@ -221,11 +221,12 @@ namespace playerAndJump
 
         }
 
-        IEnumerator waitForIdle()
+        IEnumerator waitForAnimationIdle()
         {
-            yield return new WaitForSeconds(6f);
+            yield return new WaitForSeconds(3f);
 
-            setCharacterState("Idle");
+            setCharacterState("idleFromTime");
+             
         }
 
         IEnumerator waitForNormalRun()

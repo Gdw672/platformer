@@ -2,68 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletFly : MonoBehaviour
+namespace playerAndJump
 {
-    private GameObject player;
-
-    private Rigidbody2D bullet;
-
-    private BoxCollider2D collider;
-
-    bool testPositionPlayer = true;
-
-    float sidePlayer;
-
-    void Start()
+    public class BulletFly : patronsAbstract
     {
-       
+        private GameObject player;
 
-        player = GameObject.Find("Player");
+        private Rigidbody2D bullet;
 
-        collider = gameObject.GetComponent<BoxCollider2D>();
+        bool testPositionPlayer = true;
 
-        bullet = gameObject.GetComponent<Rigidbody2D>();
-    }
+        float sidePlayer;
 
-    private void Update()
-    {
-        if (testPositionPlayer == true)
+        void Start()
         {
-            test();
+            player = GameObject.Find("Player");
+
+            bullet = gameObject.GetComponent<Rigidbody2D>();
         }
 
-        if (bullet != null)
+        private void Update()
         {
-            fly();
-        }
-     
-    }
+            if (testPositionPlayer == true)
+            {
+                test();
+            }
 
-    void fly()
-    {
-        if (sidePlayer > 0)
+            if (bullet != null)
+            {
+                bulletFly();
+            }
+
+        }
+
+       public override void bulletFly()
         {
-            bullet.velocity = new Vector2(15, 0);
+            if (sidePlayer > 0)
+            {
+                bullet.velocity = new Vector2(15, 0);
+            }
+            else
+            {
+                bullet.velocity = new Vector2(-15, 0);
+            }
         }
-        else
+
+        void test()
         {
-            bullet.velocity = new Vector2(-15, 0);
+            testPositionPlayer = false;
+
+            sidePlayer = player.transform.position.x - transform.position.x;
         }
-    }
 
-    void test()
-    {
-        testPositionPlayer = false;
-
-        sidePlayer = player.transform.position.x - transform.position.x;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "KickPlayer")
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Destroy(gameObject);
+            if (collision.gameObject.tag == "KickPlayer" || collision.gameObject.tag == "strongAttack")
+            {
+                Destroy(gameObject);
+            }
         }
-    }
 
+    }
 }

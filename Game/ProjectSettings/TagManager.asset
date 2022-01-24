@@ -11,6 +11,8 @@ TagManager:
   - bullet
   - movingPlatform
   - Suiside
+  - strongAttack
+  - bulletPlayer
   layers:
   - Default
   - TransparentFX

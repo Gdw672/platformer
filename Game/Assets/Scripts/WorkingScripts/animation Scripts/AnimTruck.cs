@@ -12,7 +12,6 @@ namespace playerAndJump {
         private string currentAnimation;
 
 
-        int hp;
         bool isHit, isShot, isDeath;
         private void Start()
         {
@@ -22,12 +21,7 @@ namespace playerAndJump {
 
         private void Update()
         {
-           
-
-            hp = gameObject.GetComponent<takeDamage>().hp;
-
             isDeath = gameObject.GetComponent<takeDamage>().isDeath;
-
             moveAnim();
          }
 

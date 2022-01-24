@@ -9,29 +9,51 @@ namespace playerAndJump
     {
 
 
-        public Rigidbody2D player;
+        Rigidbody2D player;
 
-        public static int sumJump = 1;
+        public static int sumJump;
+        public static bool canJump;
+
+        private void Start()
+        {
+            canJump = true;
+
+            player = gameObject.GetComponent<Rigidbody2D>();
+
+            sumJump = 1;
+        }
 
 
-
+        private void Update()
+        {
+            jumpFromPC();
+        }
 
         public void jump()
         {
-            player.velocity = new Vector3(0, 16, 0);
+            player.AddForce(new Vector2(0, 100) * 1.6f, ForceMode2D.Impulse);
 
-            sumJump = 0;
-
-
-
+            sumJump -= 1;
         }
 
         public void realJump()
         {
-            if (sumJump == 1 && player != null)
+            if (sumJump > 0 && player != null || sumJump > 0 && player != null && Input.GetKeyDown(KeyCode.Space))
             {
+               
 
                 jump();
+            }
+        }
+
+       void jumpFromPC()
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                if (sumJump > 0 && player != null)
+                {
+                    jump();
+                }
             }
         }
 
@@ -41,25 +63,26 @@ namespace playerAndJump
             if (collision.gameObject.tag == "Ground")
             {
                 sumJump = 1;
+
+                canJump = true;
             }
         }
 
-        private void OnCollisionStay2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag == "Ground")
-            {
-                sumJump = 1;
-            }
-        }
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "Ground")
+            if(collision.gameObject.tag == "Ground")
             {
-                sumJump = 0;
+                StartCoroutine(startOffJump());
+
             }
+        }
 
+        IEnumerator startOffJump()
+        {
+            yield return new WaitForSeconds(0.2f);
 
+            sumJump = 0;
         }
     }
 }

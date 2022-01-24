@@ -15,8 +15,10 @@ namespace playerAndJump
         private float dist;
         private bool toRotation;
         protected internal bool leftRight, forBullet, isKick, shot;
+        Vector2 size;
         private void Start()
         {
+             size = new Vector2(gameObject.transform.localScale.x, gameObject.transform.localScale.y);
             forBullet = true;
             toRotation = false;
             enemyBody = gameObject.GetComponent<Rigidbody2D>();
@@ -38,12 +40,12 @@ namespace playerAndJump
                 if (leftRight == false && isKick == false)
                 {
                     transform.Translate(Vector2.left * speed * Time.deltaTime, 0);
-                    transform.localScale = new Vector2(-0.76f, 0.76f);
+                    transform.localScale = new Vector2(-size.x, size.y) ;
                 }
                 if (leftRight == true && isKick == false)
                 {
                     transform.Translate(Vector2.right * speed * Time.deltaTime, 0);
-                    transform.localScale = new Vector2(0.76f, 0.76f);
+                    transform.localScale = size;
 
                 }
 
@@ -57,15 +59,13 @@ namespace playerAndJump
         {
             if(toRotation == false)
             {
-                transform.localScale = -transform.localScale;
                 toRotation = true;
                 enemyPosition = gameObject.transform.position;
             }
 
             if(enemyPosition.x - gameObject.transform.position.x < -5 || enemyPosition.x - gameObject.transform.position.x > 5)
             {
-                            
-
+                           
                 leftRight = !leftRight;
                 toRotation = false;
             }
@@ -109,7 +109,7 @@ namespace playerAndJump
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.tag == "KickPlayer")
+            if(collision.tag == "KickPlayer" || collision.tag == "strongAttack")
             {
                 isKick = true;
                 StopAllCoroutines();

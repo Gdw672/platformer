@@ -81,6 +81,8 @@ namespace playerAndJump
 
             box.enabled = true;
 
+            box.tag = "strongAttack";
+
             box.transform.localScale = new Vector2(box.transform.localScale.x * 2, box.transform.localScale.y);
 
             if (JerkScript.testRotation == 1)
@@ -91,10 +93,12 @@ namespace playerAndJump
 
             attackButton.enabled = false;
 
-
             sprite.enabled = true;
 
             yield return new WaitForSeconds(0.4f);
+
+            box.tag = "KickPlayer";
+
 
             onButtons(left, right, jump, jerk);
 

@@ -68,7 +68,7 @@ namespace playerAndJump {
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.gameObject.tag == "KickPlayer")
+            if(collision.gameObject.tag == "KickPlayer" || collision.gameObject.tag == "strongAttack")
             {
                 triggEnt = true;
 
@@ -84,7 +84,7 @@ namespace playerAndJump {
         private void OnCollisionEnter2D(Collision2D collision)
         {
            
-                if (collision.gameObject.tag == "Player")
+                if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "bulletPlayer")
                 {
                     triggEnt = true;
 
