@@ -13,6 +13,7 @@ TagManager:
   - Suiside
   - strongAttack
   - bulletPlayer
+  - shadowOfPlayer
   layers:
   - Default
   - TransparentFX

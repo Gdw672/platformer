@@ -36,12 +36,12 @@ namespace playerAndJump
         {
             if (moveLeft.Pressed && gameObject != null)
             {
-                gameObject.transform.Translate(-0.2f, 0, 0);
+                gameObject.transform.Translate(-10f * Time.fixedDeltaTime, 0, 0);
             }
 
             if(moveRight.Pressed && gameObject != null)
             {
-                gameObject.transform.Translate(0.2f, 0, 0);
+                gameObject.transform.Translate(10f * Time.fixedDeltaTime, 0, 0);
             }
         }
 

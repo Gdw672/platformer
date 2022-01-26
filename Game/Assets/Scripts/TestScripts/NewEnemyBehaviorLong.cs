@@ -65,7 +65,6 @@ namespace playerAndJump
 
             if(enemyPosition.x - gameObject.transform.position.x < -5 || enemyPosition.x - gameObject.transform.position.x > 5)
             {
-                           
                 leftRight = !leftRight;
                 toRotation = false;
             }
@@ -113,18 +112,33 @@ namespace playerAndJump
             {
                 isKick = true;
                 StopAllCoroutines();
-                if (forBullet == false)
-                    StartCoroutine(regenerationBullet());
+                StartCoroutine(regenerationBullet(2f));
+            }
+
+            
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if(collision.gameObject.tag == "bulletPlayer")
+            {
+                isKick = true;
+                StopAllCoroutines();
+                StartCoroutine(regenerationBullet(1f));
+            }
+        }
+        IEnumerator regenerationBullet(float d)
+        {
+            yield return new WaitForSeconds(d);
+            isKick = false;
+            if(forBullet == false)
+            {
+                forBullet = true;
+
             }
         }
 
-        IEnumerator regenerationBullet()
-        {
-            yield return new WaitForSeconds(3f);
-            isKick = false;
-            forBullet = true;
-        }
-
+        
         IEnumerator isShot()
         {
             shot = true;

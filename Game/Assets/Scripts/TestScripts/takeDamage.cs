@@ -11,9 +11,9 @@ namespace playerAndJump
 
        public int hp = 100;
 
-        Vector2 vectorLeft = new Vector2(40, 15);
+        Vector2 vectorLeft = new Vector2(20, 0);
 
-        Vector2 vectorRight = new Vector2(-40, 15);
+        Vector2 vectorRight = new Vector2(-20, 0);
 
         private Rigidbody2D enemyBody;
 
@@ -47,6 +47,10 @@ namespace playerAndJump
             if (collision.gameObject.tag == "strongAttack")
             {
                 Damage(50);
+            }
+            if(collision.gameObject.tag == "shadowOfPlayer")
+            {
+                Damage(25);
             }
            
         }

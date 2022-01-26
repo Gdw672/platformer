@@ -31,13 +31,13 @@ namespace playerAndJump
 
                 StartCoroutine(takeDamage());
             }
-            if (collision.gameObject.tag == "enemy")
+            if (collision.gameObject.tag == "enemy" && collision.gameObject.GetComponent<EnemyBehavior>() == false)
             {
                hp -= 30;
                 StartCoroutine(takeDamage());
             }
 
-            if(collision.gameObject.tag == "Suiside")
+            if(collision.gameObject.tag == "enemy" &&collision.gameObject.GetComponent<EnemyBehavior>() == true)
             {
                 hp -= 50;
                 StartCoroutine(takeDamage());

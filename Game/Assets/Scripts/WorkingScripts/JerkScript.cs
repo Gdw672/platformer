@@ -10,27 +10,37 @@ namespace playerAndJump
         private Rigidbody2D player;
         public static int jerkSum = 1;
         public static int testRotation = 1;
-        public static bool isJerk;
+        public static bool isJerk , isReadyTJerk;
         Vector2 stopJerk = new Vector2(0, -3);
         public Button goLeft, goRight, Jump, Jerk, attackButton;
         strongAttack attack = new strongAttack();
-
+        Transform shadowOfPlayer;
+        SpriteRenderer sprite;
+        BoxCollider2D boxOfShadow;
         private void Start()
         {
             isJerk = false;
             player = GetComponent<Rigidbody2D>();
-        }
-       
+            shadowOfPlayer = transform.GetChild(1);
 
+            sprite = shadowOfPlayer.GetComponent<SpriteRenderer>();
+            boxOfShadow = shadowOfPlayer.GetComponent<BoxCollider2D>();
+
+            sprite.enabled = false;
+
+            boxOfShadow.enabled = false;
+
+            StartCoroutine(regenerateTJerk());
+        }
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "enemy")
             {
-                if (testRotation == 1)
-                {
-                    isJerk = false;
+               if (testRotation == 1)
+               {
+                   isJerk = false;
 
-                    StopAllCoroutines();
+                    StopCoroutine(stopJerkCor());
 
                     player.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -42,27 +52,36 @@ namespace playerAndJump
 
                     jerkSum = 1;
                 }
-                else
-                {
-                    isJerk = false;
-
-                    StopAllCoroutines();
-
-                    player.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-                    player.velocity = new Vector2(0, 0);
-
-                    player.AddForce(new Vector2(180, 0), ForceMode2D.Impulse);
-
-                    onButtons();
-                    jerkSum = 1;
-                }
             }
+
+            
         }
 
-       
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.X))
+            {
+                defoultJerk();
+            }
+            
+            if(isReadyTJerk == true && isJerk == true)
+            {
+                ignoreEnemyes();
+            }
+
+        }
         public void jerk()
         {
+            defoultJerk();
+        }
+        void defoultJerk()
+        {
+            if(jerkSum > 0)
+            {
+                moveRight.Pressed = false;
+                moveLeft.Pressed = false;
+
+            }
 
             Vector2 jerkPos = new Vector2(30, 0);
 
@@ -76,56 +95,107 @@ namespace playerAndJump
 
                 StartCoroutine(stopJerkCor());
 
+                isJerk = true;
+
                 offButtons();
 
                 player.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 
                 player.velocity = jerkPos;
 
-                isJerk = true;
+            }
+        }
+        void ignoreEnemyes()
+        {
+            sprite.enabled = true;
+
+            boxOfShadow.enabled = true;
+
+            bool dere;
+
+            GameObject[] allEnemyes = GameObject.FindGameObjectsWithTag("enemy");
+            GameObject[] allBullets = GameObject.FindGameObjectsWithTag("bullet");
+
+
+            for (int i = 0; i < allEnemyes.Length; i++)
+            {
+                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), allEnemyes[i].GetComponent<Collider2D>(), dere = true);
+            }
+
+            for (int i = 0; i < allBullets.Length; i++)
+            {
+                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), allBullets[i].GetComponent<Collider2D>(), dere = true);
             }
 
         }
+        void notIgnoreEnemyes()
+        {
+            sprite.enabled = false;
 
-     
+            boxOfShadow.enabled = false;
 
+            bool dere;
+
+            GameObject[] allEnemyes = GameObject.FindGameObjectsWithTag("enemy");
+            GameObject[] allBullets = GameObject.FindGameObjectsWithTag("bullet");
+
+            for (int i = 0; i < allEnemyes.Length; i++)
+            {
+                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), allEnemyes[i].GetComponent<Collider2D>(), dere = false);
+            }
+
+            for (int i = 0; i < allBullets.Length; i++)
+            {
+                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), allBullets[i].GetComponent<Collider2D>(), dere = false);
+            }
+
+            isReadyTJerk = false;
+
+        }
         private IEnumerator stopJerkCor()
         {
             yield return new WaitForSeconds(0.5f);
-
-           
 
             player.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             player.velocity = stopJerk;
 
             isJerk = false;
+            
+            if(isReadyTJerk == true)
+            {
+                notIgnoreEnemyes();
+
+                sprite.enabled = false;
+
+                boxOfShadow.enabled = false;
+            }
+
+            StartCoroutine(regenerateTJerk());
 
             onButtons();
 
             yield return new WaitForSeconds(1f);
 
             jerkSum = 1;
-
         }
+        IEnumerator regenerateTJerk()
+        {
+            yield return new WaitForSeconds(3f);
 
+            print("ready");
 
-        
+            isReadyTJerk = true;
+        }
+     
        protected internal void offButtons()
         {
-
-           
-
             attack.offButtons(goLeft, goRight, attackButton, Jump);
-           
         }
 
         protected internal void onButtons()
         { 
             attack.onButtons(goLeft, goRight, attackButton, Jump);
-
         }
-
-
     }
 }
