@@ -36,8 +36,13 @@ namespace playerAndJump
         {
             if (collision.gameObject.tag == "enemy")
             {
+                collision.gameObject.GetComponent<Rigidbody2D>().mass = 200;
+
+
                if (testRotation == 1)
                {
+
+
                    isJerk = false;
 
                     StopCoroutine(stopJerkCor());
@@ -51,12 +56,12 @@ namespace playerAndJump
                     onButtons();
 
                     jerkSum = 1;
+
+                    collision.gameObject.GetComponent<Rigidbody2D>().mass = 20;
+
                 }
-            }
-
-            
+            }   
         }
-
         private void Update()
         {
             if(Input.GetKeyDown(KeyCode.X))
@@ -68,7 +73,6 @@ namespace playerAndJump
             {
                 ignoreEnemyes();
             }
-
         }
         public void jerk()
         {
@@ -76,12 +80,7 @@ namespace playerAndJump
         }
         void defoultJerk()
         {
-            if(jerkSum > 0)
-            {
-                moveRight.Pressed = false;
-                moveLeft.Pressed = false;
 
-            }
 
             Vector2 jerkPos = new Vector2(30, 0);
 

@@ -11,10 +11,13 @@ namespace playerAndJump
     {
         static public float hp = 100;
         static public bool isTakeDamage;
+        int sumOfDamageFire;
+        bool wasDamage;
+        
 
         private void Update()
         {
-
+         
             if (hp <= 0)
             {
                 SceneManager.LoadScene(0);
@@ -27,26 +30,61 @@ namespace playerAndJump
         {
             if (collision.gameObject.tag == "bullet")
             {
-                hp -= 20;
 
-                StartCoroutine(takeDamage());
+                Damage(20);
+            
             }
             if (collision.gameObject.tag == "enemy" && collision.gameObject.GetComponent<EnemyBehavior>() == false)
             {
-               hp -= 30;
-                StartCoroutine(takeDamage());
+                Damage(30);
             }
 
             if(collision.gameObject.tag == "enemy" &&collision.gameObject.GetComponent<EnemyBehavior>() == true)
             {
-                hp -= 50;
-                StartCoroutine(takeDamage());
+                Damage(50);
+            }
+            if( collision.gameObject.tag == "bulletFire")
+            {
+                if(wasDamage == true) {
+                    Damage(10);
+
+                }else
+                {
+                    InvokeRepeating("damageFire", 0, 4);
+                }
+                Destroy(collision.gameObject);
+                
             }
         }
 
+
+        void damageFire()
+        {
+            wasDamage = true;
+            hp -= 10;
+            sumOfDamageFire += 1;
+            print(sumOfDamageFire);
+            print(hp);
+            if(sumOfDamageFire == 3)
+            {
+                CancelInvoke("damageFire");
+                wasDamage = false;
+            }
+        }
+      
+
         private void Start()
         {
+            wasDamage = false;
+            sumOfDamageFire = 0;
             isTakeDamage = false;
+        }
+
+        void Damage(int damage)
+        {
+            hp -= damage;
+            StartCoroutine(takeDamage());
+
         }
 
         IEnumerator takeDamage()

@@ -45,7 +45,6 @@ namespace playerAndJump
 
         private IEnumerator ssa()
         {
-            print("defoult");
             if(JerkScript.testRotation == 1 )
             gameObject.transform.localPosition = new Vector2(8f, 14f);
 

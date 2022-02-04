@@ -9,11 +9,12 @@ namespace playerAndJump
     {
         
         public GameObject player, bullet;
-        private Rigidbody2D enemyBody;
-        private Vector2 enemyPosition;
+        protected Rigidbody2D enemyBody;
+        protected Vector2 enemyPosition;
         public float hp, speed, agroDist;
-        private float dist;
-        private bool toRotation;
+        protected float dist;
+        protected bool toRotation;
+        [SerializeField] private bool isFire;
         protected internal bool leftRight, forBullet, isKick, shot;
         Vector2 size;
         private void Start()
@@ -55,7 +56,7 @@ namespace playerAndJump
                 }
             }
         }
-        void movement()
+       public virtual void movement()
         {
             if(toRotation == false)
             {
@@ -87,8 +88,15 @@ namespace playerAndJump
 
             clone = GameObject.Instantiate(bullet);
 
-            clone.tag = "bullet";
+            if(isFire == true)
+            {
+                clone.tag = "bulletFire";
+                clone.GetComponent<SpriteRenderer>().color = Color.red;
+            }else
+            {
+                clone.tag = "bullet";
 
+            }
             if (gameObject.transform.position.x < player.transform.position.x)
             {
                 clone.transform.position = new Vector2(gameObject.transform.localPosition.x + 1, gameObject.transform.localPosition.y + 3.4f);
@@ -114,8 +122,6 @@ namespace playerAndJump
                 StopAllCoroutines();
                 StartCoroutine(regenerationBullet(2f));
             }
-
-            
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -137,8 +143,6 @@ namespace playerAndJump
 
             }
         }
-
-        
         IEnumerator isShot()
         {
             shot = true;

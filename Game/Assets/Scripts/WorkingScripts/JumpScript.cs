@@ -12,36 +12,45 @@ namespace playerAndJump
         Rigidbody2D player;
 
         public static int sumJump;
-        public static bool canJump;
+        public static bool wasJump;
+        int maxJump;
 
         private void Start()
         {
-            canJump = true;
-
             player = gameObject.GetComponent<Rigidbody2D>();
 
-            sumJump = 1;
+            maxJump = 2;
+
+            wasJump = false;
         }
 
 
         private void Update()
         {
             jumpFromPC();
+
+
+           
         }
 
         public void jump()
         {
-            player.AddForce(new Vector2(0, 100) * 1.6f, ForceMode2D.Impulse);
+            if (sumJump > 0)
+            {
+                  wasJump = true;
+    
+                  player.velocity = Vector2.zero;
 
-            sumJump -= 1;
+                  player.AddForce(new Vector2(0, 100) * 1.6f, ForceMode2D.Impulse);
+
+                  sumJump -= 1;
+            }
         }
 
         public void realJump()
         {
-            if (sumJump > 0 && player != null || sumJump > 0 && player != null && Input.GetKeyDown(KeyCode.Space))
+            if (sumJump > 0 && player != null)
             {
-               
-
                 jump();
             }
         }
@@ -62,9 +71,9 @@ namespace playerAndJump
         {
             if (collision.gameObject.tag == "Ground")
             {
-                sumJump = 1;
+                sumJump = maxJump;
 
-                canJump = true;
+                wasJump = false;
             }
         }
 
@@ -73,8 +82,8 @@ namespace playerAndJump
         {
             if(collision.gameObject.tag == "Ground")
             {
+                if(wasJump == false)
                 StartCoroutine(startOffJump());
-
             }
         }
 
@@ -82,8 +91,11 @@ namespace playerAndJump
         {
             yield return new WaitForSeconds(0.2f);
 
-            sumJump = 0;
+            if (wasJump == false)
+                sumJump -= 1;
         }
+    
+      
     }
 }
  

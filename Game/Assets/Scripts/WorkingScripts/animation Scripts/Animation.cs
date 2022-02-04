@@ -134,12 +134,12 @@ namespace playerAndJump
             if (playerHp.isTakeDamage == false)
             {
 
-                if ((moveLeft.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false) || (moveRight.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false))
+                if ((moveLeft.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false && inAir == false) || (moveRight.Pressed == true && inAir == false && attackScript.isHit == false && JerkScript.isJerk == false))
                 {
                     setCharacterState("run");
                 }
 
-                if (JumpScript.sumJump == 0 && JerkScript.isJerk == false && playerBody.velocity.y > 0 && attackScript.isHit == false)
+                if (JumpScript.sumJump < 2 && JerkScript.isJerk == false && playerBody.velocity.y > 0 && attackScript.isHit == false)
                 {
                     setCharacterState("jump");
                 }
@@ -148,6 +148,7 @@ namespace playerAndJump
                 {
                     setCharacterState("jerk");
                 }
+                
 
                 if (playerBody.velocity.y < -0.1f && attackScript.isHit == false)
                 {
@@ -202,6 +203,7 @@ namespace playerAndJump
                 StartCoroutine("landingTime");
 
                 inAir = false;
+
             }
         }
 
