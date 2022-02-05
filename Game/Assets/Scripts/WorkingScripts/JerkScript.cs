@@ -10,7 +10,7 @@ namespace playerAndJump
         private Rigidbody2D player;
         public static int jerkSum = 1;
         public static int testRotation = 1;
-        public static bool isJerk , isReadyTJerk;
+        public static bool isJerk, isReadyTJerk;
         Vector2 stopJerk = new Vector2(0, -3);
         public Button goLeft, goRight, Jump, Jerk, attackButton;
         strongAttack attack = new strongAttack();
@@ -39,11 +39,9 @@ namespace playerAndJump
                 collision.gameObject.GetComponent<Rigidbody2D>().mass = 200;
 
 
-               if (testRotation == 1)
-               {
-
-
-                   isJerk = false;
+                if (testRotation == 1)
+                {
+                    isJerk = false;
 
                     StopCoroutine(stopJerkCor());
 
@@ -60,18 +58,22 @@ namespace playerAndJump
                     collision.gameObject.GetComponent<Rigidbody2D>().mass = 20;
 
                 }
-            }   
+            }
         }
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.X))
             {
                 defoultJerk();
             }
-            
-            if(isReadyTJerk == true && isJerk == true)
+
+            if (isReadyTJerk == true && isJerk == true)
             {
-                ignoreEnemyes();
+                gameObject.layer = 3;
+            }
+            else
+            {
+                gameObject.layer = 0;
             }
         }
         public void jerk()
@@ -80,9 +82,17 @@ namespace playerAndJump
         }
         void defoultJerk()
         {
+            moveLeft.Pressed = false;
 
+            moveRight.Pressed = false;
 
             Vector2 jerkPos = new Vector2(30, 0);
+
+            if (isReadyTJerk)
+            {
+                sprite.enabled = true;
+                boxOfShadow.enabled = true;
+            }
 
             if (testRotation == 0)
                 jerkPos = -jerkPos;
@@ -104,53 +114,7 @@ namespace playerAndJump
 
             }
         }
-        void ignoreEnemyes()
-        {
-            sprite.enabled = true;
 
-            boxOfShadow.enabled = true;
-
-            bool dere;
-
-            GameObject[] allEnemyes = GameObject.FindGameObjectsWithTag("enemy");
-            GameObject[] allBullets = GameObject.FindGameObjectsWithTag("bullet");
-
-
-            for (int i = 0; i < allEnemyes.Length; i++)
-            {
-                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), allEnemyes[i].GetComponent<Collider2D>(), dere = true);
-            }
-
-            for (int i = 0; i < allBullets.Length; i++)
-            {
-                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), allBullets[i].GetComponent<Collider2D>(), dere = true);
-            }
-
-        }
-        void notIgnoreEnemyes()
-        {
-            sprite.enabled = false;
-
-            boxOfShadow.enabled = false;
-
-            bool dere;
-
-            GameObject[] allEnemyes = GameObject.FindGameObjectsWithTag("enemy");
-            GameObject[] allBullets = GameObject.FindGameObjectsWithTag("bullet");
-
-            for (int i = 0; i < allEnemyes.Length; i++)
-            {
-                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), allEnemyes[i].GetComponent<Collider2D>(), dere = false);
-            }
-
-            for (int i = 0; i < allBullets.Length; i++)
-            {
-                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), allBullets[i].GetComponent<Collider2D>(), dere = false);
-            }
-
-            isReadyTJerk = false;
-
-        }
         private IEnumerator stopJerkCor()
         {
             yield return new WaitForSeconds(0.5f);
@@ -160,18 +124,18 @@ namespace playerAndJump
             player.velocity = stopJerk;
 
             isJerk = false;
-            
-            if(isReadyTJerk == true)
+
+            if (isReadyTJerk == true)
             {
-                notIgnoreEnemyes();
+                isReadyTJerk = false;
 
                 sprite.enabled = false;
 
                 boxOfShadow.enabled = false;
+
+                StartCoroutine(regenerateTJerk());
+
             }
-
-            StartCoroutine(regenerateTJerk());
-
             onButtons();
 
             yield return new WaitForSeconds(1f);
@@ -180,20 +144,20 @@ namespace playerAndJump
         }
         IEnumerator regenerateTJerk()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(10f);
 
             print("ready");
 
             isReadyTJerk = true;
         }
-     
-       protected internal void offButtons()
+
+        protected internal void offButtons()
         {
             attack.offButtons(goLeft, goRight, attackButton, Jump);
         }
 
         protected internal void onButtons()
-        { 
+        {
             attack.onButtons(goLeft, goRight, attackButton, Jump);
         }
     }
