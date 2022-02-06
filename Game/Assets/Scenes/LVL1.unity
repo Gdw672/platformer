@@ -506,6 +506,14 @@ PrefabInstance:
       propertyPath: m_DynamicOccludee
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2294071538261039563, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2294071538261039563, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f045a09f223123941adc2087b4594000, type: 2}
     - target: {fileID: 2294071538261039564, guid: 07b3571c2128a5d4ca2c6ea1f4834f28, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2105,7 +2113,7 @@ GameObject:
   - component: {fileID: 790283771}
   - component: {fileID: 790283772}
   - component: {fileID: 790283773}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Suicide Enemy
   m_TagString: Suiside
   m_Icon: {fileID: 0}
@@ -3862,6 +3870,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7729095727151584610, guid: ae19f7bde4d7bf440afefe023fabf2d8, type: 3}
+--- !u!114 &1865511304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865511290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a03d40ce1cb8940977d19267301c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1882646292
 GameObject:
   m_ObjectHideFlags: 0
