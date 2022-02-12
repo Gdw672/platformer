@@ -14,6 +14,7 @@ namespace playerAndJump
         public static int sumJump;
         public static bool wasJump;
         int maxJump;
+        Animation animationOfPlayer;
 
         private void Start()
         {
@@ -22,6 +23,10 @@ namespace playerAndJump
             maxJump = 2;
 
             wasJump = false;
+
+            animationOfPlayer = gameObject.GetComponent<Animation>();
+
+       
         }
 
 
@@ -80,7 +85,7 @@ namespace playerAndJump
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            if(collision.gameObject.tag == "Ground")
+            if(collision.gameObject.tag == "Ground" && animationOfPlayer.sumOfGround == 0)
             {
                 if(wasJump == false)
                 StartCoroutine(startOffJump());
