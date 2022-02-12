@@ -33,6 +33,12 @@ public class LanguageForMenu : MonoBehaviour
 
         exit = GameObject.Find("Exit").GetComponent<Button>();
 
+        LanguageScript langeageSetting = new LanguageScript();
+
+        langeageSetting.loadLanguage();
+
+
+
         if (LanguageScript.testLanguage == 1)
         {
             play.image.sprite = playEng;

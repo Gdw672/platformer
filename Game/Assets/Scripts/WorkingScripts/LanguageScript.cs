@@ -95,14 +95,14 @@ public class LanguageScript : MonoBehaviour
 
         string json = JsonUtility.ToJson(save);
 
-        File.WriteAllText(Application.dataPath + "/Scripts/saveLanguage.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/saveLanguage.json", json);
     }
 
-    void loadLanguage()
+   public void loadLanguage()
     {
         save saveS = new save();
 
-        string json = File.ReadAllText(Application.dataPath + "/Scripts/saveLanguage.json");
+        string json = File.ReadAllText(Application.persistentDataPath +"/saveLanguage.json");
 
         saveS = JsonUtility.FromJson<save>(json);
 
