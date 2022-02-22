@@ -114,8 +114,6 @@ namespace playerAndJump
                 setAnimation(idleFromTime, false, 1f);
             }
         }
-
-
         public void MoveAnim()
         {
             if (playerHp.isTakeDamage == false)
@@ -184,13 +182,7 @@ namespace playerAndJump
         {
             if (collision.gameObject.tag == "Ground")
             {
-                //if(moveRight.Pressed == false && moveLeft.Pressed == false)
-                //groundCheck = true; //приземление
-                //  StartCoroutine("landingTime");
-                //  inAir = false;
-
                 sumOfGround += 1;
-
 
             }
         }
@@ -199,10 +191,7 @@ namespace playerAndJump
         {
             if (other.gameObject.tag == "Ground")
             {
-                //inAir = true;
-
                 sumOfGround -= 1;
-
             }
         }
         IEnumerator landingTime()
@@ -218,15 +207,11 @@ namespace playerAndJump
             yield return new WaitForSeconds(3f);
 
             setCharacterState("idleFromTime");
-             
         }
 
         IEnumerator checkGround()
         {
             yield return new WaitForSeconds(0.01f);
-
-            
-
 
         }
     }

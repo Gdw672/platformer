@@ -5,9 +5,11 @@ using UnityEngine;
 
 namespace playerAndJump
 {
+
     public class playerCreatePatrons : MonoBehaviour
     {
-        int sumOfPatrons;
+        
+        internal int sumOfPatrons;
 
         public GameObject bullet;
 
@@ -15,6 +17,8 @@ namespace playerAndJump
         private void Start()
         {
             sumOfPatrons = 5;
+
+            
         }
 
 
@@ -51,5 +55,11 @@ namespace playerAndJump
                 }
             }
         }
+
+        
+
+        
+        
+       
     }
 }

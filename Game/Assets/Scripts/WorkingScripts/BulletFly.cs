@@ -19,6 +19,8 @@ namespace playerAndJump
             player = GameObject.Find("Player");
 
             bullet = gameObject.GetComponent<Rigidbody2D>();
+
+            StartCoroutine(destroyFromTime(3 , gameObject));
         }
 
         private void Update()
@@ -62,5 +64,18 @@ namespace playerAndJump
             }
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Destroy(gameObject);
+        }
+
+
+      internal IEnumerator destroyFromTime(int second , GameObject gameObject)
+        {
+            yield return new WaitForSeconds(second);
+
+            Destroy(gameObject);
+
+        }
     }
 }

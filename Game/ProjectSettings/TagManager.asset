@@ -15,6 +15,9 @@ TagManager:
   - bulletPlayer
   - shadowOfPlayer
   - bulletFire
+  - airFlow
+  - boxOfPatrons
+  - wall
   layers:
   - Default
   - TransparentFX

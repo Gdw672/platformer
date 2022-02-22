@@ -8,19 +8,31 @@ namespace playerAndJump
     {
         moveLeft moveLeft = new moveLeft();
         moveRight moveRight = new moveRight();
+        Rigidbody2D player;
+        
         public void downLeft()
         {
+
+            
+
+            player.velocity = new Vector2(0, player.velocity.y);
             moveLeft.onDown();
+          
         }
 
         public void upLeft()
         {
+            
             moveLeft.onUp();
+           
         }
 
         public void downRight()
         {
+            player.velocity = new Vector2(0, player.velocity.y);
+
             moveRight.onDown();
+
         }
 
         public void upRight()
@@ -29,11 +41,17 @@ namespace playerAndJump
         }
 
 
-        
-       
+        private void Start()
+        {
+            player = GetComponent<Rigidbody2D>();
+
+        }
+
 
         private void FixedUpdate()
         {
+            
+
             if (moveLeft.Pressed && gameObject != null)
             {
                 gameObject.transform.Translate(-10f * Time.fixedDeltaTime, 0, 0);
@@ -41,6 +59,7 @@ namespace playerAndJump
 
             if(moveRight.Pressed && gameObject != null)
             {
+
                 gameObject.transform.Translate(10f * Time.fixedDeltaTime, 0, 0);
             }
         }

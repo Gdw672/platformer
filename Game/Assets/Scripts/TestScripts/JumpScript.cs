@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace playerAndJump
 {
-    public class JumpScript : MonoBehaviour
+    public partial class JumpScript : MonoBehaviour
     {
 
-
+        wallAndPlayerReaction playerAndWall;
         Rigidbody2D player;
 
         public static int sumJump;
@@ -18,6 +18,8 @@ namespace playerAndJump
 
         private void Start()
         {
+            playerAndWall = gameObject.GetComponent<wallAndPlayerReaction>();
+
             player = gameObject.GetComponent<Rigidbody2D>();
 
             maxJump = 2;
@@ -25,8 +27,6 @@ namespace playerAndJump
             wasJump = false;
 
             animationOfPlayer = gameObject.GetComponent<Animation>();
-
-       
         }
 
 
@@ -40,8 +40,7 @@ namespace playerAndJump
 
         public void jump()
         {
-            if (sumJump > 0)
-            {
+           
                   wasJump = true;
     
                   player.velocity = Vector2.zero;
@@ -49,14 +48,21 @@ namespace playerAndJump
                   player.AddForce(new Vector2(0, 100) * 1.6f, ForceMode2D.Impulse);
 
                   sumJump -= 1;
-            }
+            
         }
 
         public void realJump()
         {
-            if (sumJump > 0 && player != null)
+            if (sumJump > 0 && player.gameObject != null && playerAndWall.onWall == false)
             {
                 jump();
+                print("defualt");
+            }
+
+            if(sumJump > 0 && player.gameObject != null && playerAndWall.onWall == true)
+            {
+                print("jumpFromWall");
+                jumpFromWall();
             }
         }
 
@@ -66,7 +72,7 @@ namespace playerAndJump
             {
                 if (sumJump > 0 && player != null)
                 {
-                    jump();
+                    realJump();
                 }
             }
         }
@@ -99,8 +105,43 @@ namespace playerAndJump
             if (wasJump == false)
                 sumJump -= 1;
         }
-    
-      
+        void jumpFromWall()
+        {
+            if (playerAndWall.wallIsRight)
+            {
+                player.AddForce(new Vector2(-10, 0), ForceMode2D.Impulse);
+            }
+
+            if(playerAndWall.wallIsLeft)
+            {
+                player.AddForce(new Vector2(10, 0), ForceMode2D.Impulse);
+            }
+            StartCoroutine(waitForJumpWall());
+
+        }
+
+        IEnumerator waitForJumpWall()
+        {
+            yield return new WaitForSeconds(0.05f);
+
+            if(playerAndWall.wallIsRight)
+            {
+                JerkScript.testRotation = 0;
+
+                player.AddForce(new Vector2(-20, 24) * 10f, ForceMode2D.Impulse);
+
+                sumJump -= 1;
+            }
+
+           if(playerAndWall.wallIsLeft)
+            {
+                JerkScript.testRotation = 1;
+
+                player.AddForce(new Vector2(20, 24) * 10f, ForceMode2D.Impulse);
+
+                sumJump -= 1;
+            }
+        }
     }
 }
  
