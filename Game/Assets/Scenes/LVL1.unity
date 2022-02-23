@@ -2197,6 +2197,7 @@ GameObject:
   - component: {fileID: 1028113524}
   - component: {fileID: 1028113523}
   - component: {fileID: 1028113522}
+  - component: {fileID: 1028113525}
   m_Layer: 0
   m_Name: wall (1)
   m_TagString: wall
@@ -2289,12 +2290,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028113521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.67, y: -9.74, z: 0}
-  m_LocalScale: {x: 1, y: 21.287, z: 1}
+  m_LocalPosition: {x: 11.21, y: -9.74, z: 0}
+  m_LocalScale: {x: 2.3953123, y: 21.287, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1028113525
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028113521}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 2
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &1092448024
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,7 +3635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030362071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.9, y: -9.74, z: 0}
+  m_LocalPosition: {x: 22, y: -9.74, z: 0}
   m_LocalScale: {x: 1, y: 21.287, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4075,6 +4097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58528d3390ef5944898a692dca0f268a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goRight: {fileID: 123570452}
 --- !u!1001 &4677372419589410952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4265,6 +4288,10 @@ PrefabInstance:
       propertyPath: hit
       value: 
       objectReference: {fileID: 404753283}
+    - target: {fileID: 7660682596160515104, guid: 11185e7c7bb1f984bb6696a8b70689d1, type: 3}
+      propertyPath: goRight
+      value: 
+      objectReference: {fileID: 123570452}
     - target: {fileID: 7660682596160515292, guid: 11185e7c7bb1f984bb6696a8b70689d1, type: 3}
       propertyPath: m_LinearDrag
       value: 0.8
@@ -4331,7 +4358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8468486742380684197, guid: 11185e7c7bb1f984bb6696a8b70689d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.8
+      value: 16.8
       objectReference: {fileID: 0}
     - target: {fileID: 8468486742380684197, guid: 11185e7c7bb1f984bb6696a8b70689d1, type: 3}
       propertyPath: m_LocalPosition.y

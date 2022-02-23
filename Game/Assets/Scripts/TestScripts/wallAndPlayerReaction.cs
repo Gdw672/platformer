@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace playerAndJump
 {
     public class wallAndPlayerReaction : MonoBehaviour
     {
        internal bool wallIsLeft, wallIsRight;
-        
+
+       public Button goRight;
 
         private Rigidbody2D player;
 
@@ -16,6 +18,7 @@ namespace playerAndJump
 
         private void Start()
         {
+            
             onWall = false;
             player = GetComponent<Rigidbody2D>();
         }
@@ -23,7 +26,7 @@ namespace playerAndJump
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "wall")
-            { 
+            {
                 JumpScript.sumJump = 1;
 
                 onWall = true;
@@ -40,6 +43,8 @@ namespace playerAndJump
             if (collision.gameObject.tag == "wall")
             {
                 player.velocity = new Vector2(0, -1.5f);
+                moveRight.Pressed = false;
+                moveLeft.Pressed = false;
             }
 
 
@@ -48,8 +53,11 @@ namespace playerAndJump
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            onWall = false;
-            
+            if(collision.gameObject.tag == "wall")
+            {
+                onWall = false;
+
+            }
         }
 
         void detectVoid(Collision2D collision)

@@ -29,7 +29,7 @@ namespace playerAndJump
 
         public void downRight()
         {
-            player.velocity = new Vector2(0, player.velocity.y);
+           player.velocity = new Vector2(0, player.velocity.y);
 
             moveRight.onDown();
 

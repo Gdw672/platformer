@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace playerAndJump
 {
@@ -32,10 +33,11 @@ namespace playerAndJump
 
         private void Update()
         {
-            jumpFromPC();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                realJump();
 
-
-           
+            }
         }
 
         public void jump()
@@ -68,13 +70,7 @@ namespace playerAndJump
 
        void jumpFromPC()
         {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                if (sumJump > 0 && player != null)
-                {
-                    realJump();
-                }
-            }
+            realJump();
         }
 
 
@@ -116,15 +112,17 @@ namespace playerAndJump
             {
                 player.AddForce(new Vector2(10, 0), ForceMode2D.Impulse);
             }
+
             StartCoroutine(waitForJumpWall());
 
         }
 
         IEnumerator waitForJumpWall()
         {
+
             yield return new WaitForSeconds(0.05f);
 
-            if(playerAndWall.wallIsRight)
+            if (playerAndWall.wallIsRight)
             {
                 JerkScript.testRotation = 0;
 
@@ -142,6 +140,8 @@ namespace playerAndJump
                 sumJump -= 1;
             }
         }
+
+        
     }
 }
  
