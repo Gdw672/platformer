@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: ch_SkeletonData
+  m_Name: GGpsd_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 2184d0d79d80622429173c82d6ab66bf, type: 2}
+  - {fileID: 11400000, guid: 1e28374a811cfb549825951ea86a4093, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 1bf489ce5563a374aa69a77ec6d193dd, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 48ddb2147b972434a8f788d5c6a14b84, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
@@ -24,11 +24,8 @@ MonoBehaviour:
     multiplyMaterials: []
     screenMaterials: []
   skeletonDataModifiers: []
-  fromAnimation:
-  - fall
-  toAnimation:
-  - run
-  duration:
-  - -30
-  defaultMix: 0.2
+  fromAnimation: []
+  toAnimation: []
+  duration: []
+  defaultMix: 0.3
   controller: {fileID: 0}
