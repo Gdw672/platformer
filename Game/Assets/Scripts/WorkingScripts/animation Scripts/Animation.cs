@@ -34,10 +34,10 @@ namespace playerAndJump
             MoveAnim();
          
             if (JerkScript.testRotation == 0)
-                transform.localScale = new Vector2(-0.25f, 0.25f);
+                transform.localScale = new Vector2(-1f, 1f);
 
             if (JerkScript.testRotation == 1)
-                transform.localScale = new Vector2(0.25f, 0.25f);
+                transform.localScale = new Vector2(1f , 1f);
         }
 
 

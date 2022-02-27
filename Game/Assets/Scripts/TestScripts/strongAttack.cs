@@ -86,10 +86,10 @@ namespace playerAndJump
             box.transform.localScale = new Vector2(box.transform.localScale.x * 2, box.transform.localScale.y);
 
             if (JerkScript.testRotation == 1)
-                gameObject.transform.localPosition = new Vector2(8f, 14f);
+                gameObject.transform.localPosition = new Vector2(2f, 3.5f);
 
             if (JerkScript.testRotation == 0)
-                gameObject.transform.localPosition = new Vector2(8f, 14f);
+                gameObject.transform.localPosition = new Vector2(2f, 3.5f);
 
             attackButton.enabled = false;
 

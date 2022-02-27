@@ -46,10 +46,10 @@ namespace playerAndJump
         private IEnumerator ssa()
         {
             if(JerkScript.testRotation == 1 )
-            gameObject.transform.localPosition = new Vector2(8f, 14f);
+            gameObject.transform.localPosition = new Vector2(2f, 3.5f);
 
             if(JerkScript.testRotation == 0)
-                gameObject.transform.localPosition = new Vector2(8f, 14f);
+                gameObject.transform.localPosition = new Vector2(2f, 3.5f);
 
             hit.enabled = false;
 
