@@ -15,6 +15,7 @@ namespace playerAndJump
         public static int sumJump;
         public static bool wasJump;
         int maxJump;
+        internal bool isJumpFromWall;
         Animation animationOfPlayer;
 
         private void Start()
@@ -67,13 +68,6 @@ namespace playerAndJump
                 jumpFromWall();
             }
         }
-
-       void jumpFromPC()
-        {
-            realJump();
-        }
-
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Ground")
@@ -113,6 +107,8 @@ namespace playerAndJump
                 player.AddForce(new Vector2(10, 0), ForceMode2D.Impulse);
             }
 
+            isJumpFromWall = true;
+
             StartCoroutine(waitForJumpWall());
 
         }
@@ -139,6 +135,8 @@ namespace playerAndJump
 
                 sumJump -= 1;
             }
+            yield return new WaitForSeconds(0.2f);
+
         }
 
         

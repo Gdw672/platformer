@@ -11,22 +11,26 @@ namespace playerAndJump
         
         internal int sumOfPatrons;
 
+       internal bool isReadyPatron;
+
         public GameObject bullet;
 
 
         private void Start()
         {
             sumOfPatrons = 5;
+            isReadyPatron = true;
 
-            
+
         }
 
 
         public  void createBullet()
         {
 
-            if (sumOfPatrons > 0)
+            if (sumOfPatrons > 0 && isReadyPatron)
             {
+                isReadyPatron = false;
               var clone = Instantiate(bullet);
 
                 clone.tag = "bulletPlayer";
@@ -53,11 +57,21 @@ namespace playerAndJump
                     cloneBody.velocity = new Vector2(-16, 0);
 
                 }
+                StartCoroutine(reloadPatrons());
             }
+
+
+
+
         }
 
         
+        private IEnumerator reloadPatrons()
+        {
+            yield return new WaitForSeconds(0.5f);
 
+            isReadyPatron = true;
+        }
         
         
        

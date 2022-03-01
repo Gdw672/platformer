@@ -11,20 +11,26 @@ namespace playerAndJump
 
     public class Animation : MonoBehaviour
     {
+        private playerCreatePatrons playerBulletAnim;
+        private strongAttack strong;
+        private wallAndPlayerReaction wall;
         public SkeletonAnimation skeletonAnimation;
-        public AnimationReferenceAsset idleFromTime, idleDefoult, run, jump, falling, fallFin, runStart, firstHit, secondHit, hitOnRun, hitonAir, jerk, takeDamage;
+        public AnimationReferenceAsset idleFromTime, idleDefoult, run, jump, falling, firstHit, secondHit, hitOnRun, hitonAir, jerk, takeDamage, slidingWall, strongAttack1, strongAttack2, rangeAttack, rangeAttackAir;
         private Rigidbody2D playerBody;
         public string currentState;
         private string currentAnimation;
         private bool groundCheck;
-        protected internal bool inAir;
         internal byte sumOfGround;
         private void Start()
         {
+            playerBulletAnim = GetComponent<playerCreatePatrons>();
+            strong = transform.GetChild(0).GetComponent<strongAttack>();
+            wall = gameObject.GetComponent<wallAndPlayerReaction>();
             playerBody = GetComponent<Rigidbody2D>();
             currentState = "Idle";
             setCharacterState(currentState);
             sumOfGround = 0;
+
 
             MoveAnim();
         }
@@ -45,6 +51,7 @@ namespace playerAndJump
         {
             if (animation.name.Equals(currentAnimation))
             {
+                print(animation.name);
                 return;
             }
 
@@ -63,10 +70,6 @@ namespace playerAndJump
             else if (state.Equals("jump"))
             {
                 setAnimation(jump, false, 1f);
-            }
-            else if (state.Equals("fallFin"))
-            {
-                setAnimation(fallFin, false, 1.5f);
             }
             else if (state.Equals("falling"))
             {
@@ -103,20 +106,36 @@ namespace playerAndJump
             {
                 setAnimation(takeDamage, false, 1f);
             }
-
-            else if (state.Equals("runStart"))
-            {
-                setAnimation(runStart, false, 1f);
-            }
-
             else if (state.Equals("idleFromTime"))
             {
                 setAnimation(idleFromTime, false, 1f);
             }
+
+            else if (state.Equals("slidingWall"))
+            {
+                setAnimation(slidingWall, true, 1f);
+            }
+            else if (state.Equals("strongAttack1"))
+            {
+                setAnimation(strongAttack1, true, 1f);
+            }
+            else if (state.Equals("strongAttack2"))
+            {
+                setAnimation(strongAttack2, false, 1f);
+            }
+            else if (state.Equals("rangeAttack"))
+            {
+                setAnimation(rangeAttack, false, 1f);
+            }
+            else if (state.Equals("rangeAttackAir"))
+            {
+                setAnimation(rangeAttackAir, false, 1f);
+            }
+
         }
         public void MoveAnim()
         {
-            if (playerHp.isTakeDamage == false)
+            if (playerHp.isTakeDamage == false &&  strong.attackIsStart == false && playerBulletAnim.isReadyPatron == true)
             {
 
                 if ((moveLeft.Pressed == true || moveRight.Pressed == true) && attackScript.isHit == false && JerkScript.isJerk == false && sumOfGround > 0)
@@ -135,7 +154,7 @@ namespace playerAndJump
                 }
                 
 
-                if (playerBody.velocity.y < -0.1f && attackScript.isHit == false)
+                if (playerBody.velocity.y < -0.1f && attackScript.isHit == false && wall.onWall == false)
                 {
                     setCharacterState("falling");
                 }
@@ -167,12 +186,40 @@ namespace playerAndJump
                         setCharacterState("secondHit");
                     }
                 }
-
+                
                 if (moveLeft.Pressed == false && moveRight.Pressed == false && JumpScript.sumJump > 0 && attackScript.isHit == false && JerkScript.isJerk == false && sumOfGround > 0)
                 {
                     setCharacterState("idleDefoult");
                 }
+
+
+                if(wall.onWall == true)
+                {
+                    setCharacterState("slidingWall");
+                }
             }
+
+            if(playerBulletAnim.isReadyPatron == false && sumOfGround > 0)
+            {
+                setCharacterState("rangeAttack");
+            }
+
+            if(playerBulletAnim.isReadyPatron == false && sumOfGround == 0)
+            {
+                setCharacterState("rangeAttackAir");
+            }
+
+            if(strong.attackIsStart == true && strong.isStrongAttack == false) 
+            {
+                setCharacterState("strongAttack1");
+            }
+            if (strong.isStrongAttack == true && strong.attackIsStart)
+            {
+                setCharacterState("strongAttack2");
+            }
+
+
+
 
             if (playerHp.isTakeDamage == true)
                 setCharacterState("takeDamage");

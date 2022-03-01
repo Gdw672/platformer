@@ -15,7 +15,7 @@ namespace playerAndJump
         public int test;
 
 
-       protected internal bool attackIsReady, attackIsStart;
+       protected internal bool attackIsReady, attackIsStart, isStrongAttack;
         
 
         private void Start()
@@ -33,7 +33,7 @@ namespace playerAndJump
 
         public void startTest()
         {
-            if(transform.parent.gameObject.GetComponent<Animation>().inAir == false)
+            if(transform.parent.gameObject.GetComponent<Animation>().sumOfGround > 0)
                 StartCoroutine(prepareToStrongAttack());
             
         }
@@ -54,7 +54,7 @@ namespace playerAndJump
                StartCoroutine(doAttack());
             }
 
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.5f);
             attackIsStart = false;
             attackIsReady = false;
         }
@@ -62,7 +62,7 @@ namespace playerAndJump
 
         private IEnumerator prepareToStrongAttack()
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
 
             attackIsStart = true;
 
@@ -75,7 +75,7 @@ namespace playerAndJump
 
       IEnumerator doAttack()
         {
-            print("strong");
+            isStrongAttack = true;
 
             offButtons(left, right, jump, jerk);
 
@@ -99,6 +99,7 @@ namespace playerAndJump
 
             box.tag = "KickPlayer";
 
+            isStrongAttack = false;
 
             onButtons(left, right, jump, jerk);
 
