@@ -19,7 +19,7 @@ namespace playerAndJump
         private Rigidbody2D playerBody;
         public string currentState;
         private string currentAnimation;
-        private bool groundCheck;
+        private bool groundCheck, isStartIdle, isStartIdleCor;
         internal byte sumOfGround;
         private void Start()
         {
@@ -189,7 +189,15 @@ namespace playerAndJump
                 
                 if (moveLeft.Pressed == false && moveRight.Pressed == false && JumpScript.sumJump > 0 && attackScript.isHit == false && JerkScript.isJerk == false && sumOfGround > 0)
                 {
-                    setCharacterState("idleDefoult");
+                    if(isStartIdle == false)
+                    {
+                        setCharacterState("idleDefoult");
+                   
+                    }
+                    if(isStartIdleCor == false)
+                    {
+                        StartCoroutine(waitForAnimationIdle());
+                    }
                 }
 
 
@@ -251,9 +259,21 @@ namespace playerAndJump
 
         IEnumerator waitForAnimationIdle()
         {
-            yield return new WaitForSeconds(3f);
+            isStartIdleCor = true;
+            yield return new WaitForSeconds(10f);
 
-            setCharacterState("idleFromTime");
+            if(moveLeft.Pressed == false && moveRight.Pressed == false && JumpScript.sumJump > 0 && attackScript.isHit == false && JerkScript.isJerk == false && sumOfGround > 0)
+            {
+                isStartIdle = true;
+
+                setCharacterState("idleFromTime");
+
+                yield return new WaitForSeconds(2f);
+                isStartIdle = false;
+            }
+
+            isStartIdleCor = false;
+           
         }
 
         IEnumerator checkGround()

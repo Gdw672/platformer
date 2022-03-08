@@ -1100,7 +1100,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15.5700865
+  orthographic size: 10.718712
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1124,7 +1124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.92, y: -18, z: -60}
+  m_LocalPosition: {x: 9.92, y: -16, z: -60}
   m_LocalScale: {x: 1.9837257, y: 2.4785492, z: 1.6648103}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2416,7 +2416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028113521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: -9.74, z: 0}
+  m_LocalPosition: {x: -7, y: -9.74, z: 0}
   m_LocalScale: {x: 2.3953123, y: 21.287, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3894,8 +3894,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonAnimation: {fileID: 1997541558}
-  idleFromTime: {fileID: 11400000, guid: 9c58c9dbc42065e40800fcc658ca28e9, type: 2}
-  idleDefoult: {fileID: 11400000, guid: 9c663ccd7c2cc844987d07cea6ba7bba, type: 2}
+  idleFromTime: {fileID: 11400000, guid: 9c663ccd7c2cc844987d07cea6ba7bba, type: 2}
+  idleDefoult: {fileID: 11400000, guid: 9c58c9dbc42065e40800fcc658ca28e9, type: 2}
   run: {fileID: 11400000, guid: c414ecdd2431e094faa1340b9544642d, type: 2}
   jump: {fileID: 11400000, guid: 63d256ca19beeed4b82bf41043b946fb, type: 2}
   falling: {fileID: 11400000, guid: c52acad4cacc1c44e886c511a16399d5, type: 2}
@@ -4187,7 +4187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030362071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.97, y: -9.74, z: 0}
+  m_LocalPosition: {x: -3, y: -9.74, z: 0}
   m_LocalScale: {x: 1, y: 21.287, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
