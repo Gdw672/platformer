@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 306784661}
   - component: {fileID: 306784660}
   - component: {fileID: 306784659}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: floor (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 324582942}
   - component: {fileID: 324582943}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: trigger
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -985,7 +985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 490996342}
   - component: {fileID: 490996343}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: trigger
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1434,7 +1434,7 @@ Transform:
   m_LocalPosition: {x: 47.373043, y: -12.199124, z: -132.77963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 661345163}
+  - {fileID: 909165383}
   - {fileID: 790283769}
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -1745,7 +1745,7 @@ GameObject:
   - component: {fileID: 839411787}
   - component: {fileID: 839411786}
   - component: {fileID: 839411785}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: floor (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2207,7 +2207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 902742987}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: All floors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2233,6 +2233,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &909165382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 909165383}
+  - component: {fileID: 909165384}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &909165383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909165382}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 26.53, y: -6.84, z: 311.43817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 661345163}
+  m_Father: {fileID: 760369497}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &909165384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909165382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ace8f6ae8dad2241a9fb732cc20b101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullets: {fileID: 505252385679327405, guid: 38878eaaee23e924aab5c8a4bdeb334c, type: 3}
 --- !u!1 &1014958470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,7 +2807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262523917}
   - component: {fileID: 1262523918}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: trigger
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2821,7 +2866,7 @@ GameObject:
   - component: {fileID: 1349281441}
   - component: {fileID: 1349281440}
   - component: {fileID: 1349281439}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2953,7 +2998,7 @@ GameObject:
   - component: {fileID: 1627233964}
   - component: {fileID: 1627233963}
   - component: {fileID: 1627233962}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: floor (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3216,7 +3261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1795312181}
   - component: {fileID: 1795312180}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: trigger
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4279,7 +4324,7 @@ GameObject:
   - component: {fileID: 2053062242}
   - component: {fileID: 2053062241}
   - component: {fileID: 2053062240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: floor (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4557,7 +4602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2117127105}
   - component: {fileID: 2117127106}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: trigger
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4604,6 +4649,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.839711, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &2143747545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6112107634855284700, guid: 43fc22a23451f2e468da87e24f724969, type: 3}
+  m_PrefabInstance: {fileID: 6112107634308668510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2143747546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143747545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b778a3e7265b84f8bd54672dd80d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4677372419589410952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4723,7 +4785,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 760369497}
+    m_TransformParent: {fileID: 909165383}
     m_Modifications:
     - target: {fileID: 6112107634855284692, guid: 43fc22a23451f2e468da87e24f724969, type: 3}
       propertyPath: m_Mesh
@@ -4735,15 +4797,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6112107634855284693, guid: 43fc22a23451f2e468da87e24f724969, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.61
+      value: -30.8
       objectReference: {fileID: 0}
     - target: {fileID: 6112107634855284693, guid: 43fc22a23451f2e468da87e24f724969, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.67
+      value: -0.96
       objectReference: {fileID: 0}
     - target: {fileID: 6112107634855284693, guid: 43fc22a23451f2e468da87e24f724969, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 132.77963
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 6112107634855284693, guid: 43fc22a23451f2e468da87e24f724969, type: 3}
       propertyPath: m_LocalRotation.w

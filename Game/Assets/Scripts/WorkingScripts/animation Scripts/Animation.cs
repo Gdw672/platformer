@@ -51,7 +51,6 @@ namespace playerAndJump
         {
             if (animation.name.Equals(currentAnimation))
             {
-                print(animation.name);
                 return;
             }
 
