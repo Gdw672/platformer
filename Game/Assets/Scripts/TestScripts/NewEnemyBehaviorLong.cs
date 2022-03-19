@@ -24,7 +24,6 @@ namespace playerAndJump
             forBullet = true;
             toRotation = false;
             enemyBody = gameObject.GetComponent<Rigidbody2D>();
-            print("F");
             enemyBody.velocity = new Vector2(3, 0);
             leftRight = false;
         }

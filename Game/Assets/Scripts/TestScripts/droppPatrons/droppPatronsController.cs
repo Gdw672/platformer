@@ -28,8 +28,6 @@ namespace playerAndJump {
             if(enemyGo != null)
             {
                 enemtPos = enemyGo.transform.position;
-                print(enemtPos);
-
             }
                 if (isDeadEnemy)
                 {

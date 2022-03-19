@@ -35,7 +35,7 @@ namespace playerAndJump
         }
         public void ac()
         {
-            if(GetComponent<strongAttack>().attackIsReady == false && GetComponent<strongAttack>().attackIsStart == false)
+            if(GetComponent<strongAttack>().attackIsReady == false) //&& GetComponent<strongAttack>().attackIsStart == false)
             {
                 StartCoroutine("ssa");
 
@@ -43,7 +43,7 @@ namespace playerAndJump
 
         }
 
-        private IEnumerator ssa()
+        internal IEnumerator ssa()
         {
             if(JerkScript.testRotation == 1 )
             gameObject.transform.localPosition = new Vector2(2f, 3.5f);

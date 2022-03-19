@@ -173,19 +173,6 @@ namespace playerAndJump
                 {
                     setCharacterState("hitonAir");
                 }
-
-                if (attackScript.isHit == true && JerkScript.isJerk == false && sumOfGround > 0 && moveRight.Pressed == false && moveLeft.Pressed == false)
-                {
-                    if (attackScript.testHitOf % 2 == 0)
-                    {
-                        setCharacterState("firstHit");
-                    }
-                    if (attackScript.testHitOf % 2 != 0)
-                    {
-                        setCharacterState("secondHit");
-                    }
-                }
-                
                 if (moveLeft.Pressed == false && moveRight.Pressed == false && JumpScript.sumJump > 0 && attackScript.isHit == false && JerkScript.isJerk == false && sumOfGround > 0)
                 {
                     if(isStartIdle == false)
@@ -206,7 +193,21 @@ namespace playerAndJump
                 }
             }
 
-            if(playerBulletAnim.isReadyPatron == false && sumOfGround > 0)
+
+            if (attackScript.isHit == true && JerkScript.isJerk == false && sumOfGround > 0 && moveRight.Pressed == false && moveLeft.Pressed == false)
+            {
+                if (attackScript.testHitOf % 2 == 0)
+                {
+                    setCharacterState("firstHit");
+                }
+                if (attackScript.testHitOf % 2 != 0)
+                {
+                    setCharacterState("secondHit");
+                }
+            }
+
+
+            if (playerBulletAnim.isReadyPatron == false && sumOfGround > 0)
             {
                 setCharacterState("rangeAttack");
             }
@@ -216,7 +217,7 @@ namespace playerAndJump
                 setCharacterState("rangeAttackAir");
             }
 
-            if(strong.attackIsStart == true && strong.isStrongAttack == false) 
+            if(strong.attackIsStart == true && strong.isStrongAttack == false && attackScript.isHit == false) 
             {
                 setCharacterState("strongAttack1");
             }

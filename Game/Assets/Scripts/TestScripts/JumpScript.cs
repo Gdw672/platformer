@@ -59,12 +59,10 @@ namespace playerAndJump
             if (sumJump > 0 && player.gameObject != null && playerAndWall.onWall == false)
             {
                 jump();
-                print("defualt");
             }
 
             if(sumJump > 0 && player.gameObject != null && playerAndWall.onWall == true)
             {
-                print("jumpFromWall");
                 jumpFromWall();
             }
         }

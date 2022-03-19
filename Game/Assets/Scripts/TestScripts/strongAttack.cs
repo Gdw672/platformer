@@ -9,9 +9,11 @@ namespace playerAndJump
 {
     public class strongAttack : MonoBehaviour
     {
+
        public Button attackButton, left, right, jump , jerk;
         BoxCollider2D box;
         SpriteRenderer sprite;
+        attackScript defaultAttack;
         public int test;
 
 
@@ -20,7 +22,7 @@ namespace playerAndJump
 
         private void Start()
         {
-            
+            defaultAttack = GetComponent<attackScript>();
             attackIsStart = false;
             attackIsReady = false;
             
@@ -42,6 +44,14 @@ namespace playerAndJump
         {
 
             StopAllCoroutines();
+
+            if(attackIsStart  && attackIsReady == false)
+            {
+
+               StartCoroutine(defaultAttack.ssa());
+
+            }
+
 
             StartCoroutine(reload());
 
