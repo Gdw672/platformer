@@ -51,7 +51,7 @@ namespace playerAndJump {
                 }
             
         }
-
+        
 
         void spawnPatrons(GameObject prefabSpawn , Vector3 spawnCoord)
         {
