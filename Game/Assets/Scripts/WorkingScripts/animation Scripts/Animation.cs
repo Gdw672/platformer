@@ -30,8 +30,6 @@ namespace playerAndJump
             currentState = "Idle";
             setCharacterState(currentState);
             sumOfGround = 0;
-
-
             MoveAnim();
         }
 
@@ -124,7 +122,7 @@ namespace playerAndJump
             }
             else if (state.Equals("rangeAttack"))
             {
-                setAnimation(rangeAttack, false, 1f);
+                setAnimation(rangeAttack, false, 1.25f);
             }
             else if (state.Equals("rangeAttackAir"))
             {
@@ -226,9 +224,6 @@ namespace playerAndJump
                 setCharacterState("strongAttack2");
             }
 
-
-
-
             if (playerHp.isTakeDamage == true)
                 setCharacterState("takeDamage");
             
@@ -237,6 +232,9 @@ namespace playerAndJump
         {
             if (collision.gameObject.tag == "Ground")
             {
+                print(sumOfGround);
+
+
                 sumOfGround += 1;
 
             }
