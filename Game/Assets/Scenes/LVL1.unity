@@ -4918,6 +4918,7 @@ MonoBehaviour:
   idleDefoult: {fileID: 11400000, guid: 9c58c9dbc42065e40800fcc658ca28e9, type: 2}
   run: {fileID: 11400000, guid: c414ecdd2431e094faa1340b9544642d, type: 2}
   jump: {fileID: 11400000, guid: 63d256ca19beeed4b82bf41043b946fb, type: 2}
+  jumpFull: {fileID: 11400000, guid: 29bac8c5752754141b8e186475389816, type: 2}
   falling: {fileID: 11400000, guid: c52acad4cacc1c44e886c511a16399d5, type: 2}
   firstHit: {fileID: 11400000, guid: 9e1516b04c69fad4f9e5bdcac15e9f39, type: 2}
   secondHit: {fileID: 11400000, guid: aceb6e32370325348b13f4b021b241e1, type: 2}

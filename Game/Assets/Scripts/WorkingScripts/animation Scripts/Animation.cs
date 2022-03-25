@@ -15,7 +15,7 @@ namespace playerAndJump
         private strongAttack strong;
         private wallAndPlayerReaction wall;
         public SkeletonAnimation skeletonAnimation;
-        public AnimationReferenceAsset idleFromTime, idleDefoult, run, jump, falling, firstHit, secondHit, hitOnRun, hitonAir, jerk, takeDamage, slidingWall, strongAttack1, strongAttack2, rangeAttack, rangeAttackAir;
+        public AnimationReferenceAsset idleFromTime, idleDefoult, run, jump, jumpFull, falling, firstHit, secondHit, hitOnRun, hitonAir, jerk, takeDamage, slidingWall, strongAttack1, strongAttack2, rangeAttack, rangeAttackAir;
         private Rigidbody2D playerBody;
         public string currentState;
         private string currentAnimation;
@@ -67,6 +67,10 @@ namespace playerAndJump
             else if (state.Equals("jump"))
             {
                 setAnimation(jump, false, 1f);
+            }
+            else if (state.Equals("jumpFull"))
+            {
+                setAnimation(jumpFull, false, 1f);
             }
             else if (state.Equals("falling"))
             {
@@ -142,7 +146,8 @@ namespace playerAndJump
 
                 if (JumpScript.sumJump < 2 && JerkScript.isJerk == false && playerBody.velocity.y > 0 && attackScript.isHit == false)
                 {
-                    setCharacterState("jump");
+                    setCharacterState("jumpFull");
+                   // setCharacterState("jump");
                 }
 
                 if (JerkScript.isJerk == true)
