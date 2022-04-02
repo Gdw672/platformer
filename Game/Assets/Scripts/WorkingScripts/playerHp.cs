@@ -28,6 +28,8 @@ namespace playerAndJump
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+           
+
             if (collision.gameObject.tag == "bullet")
             {
 
@@ -55,6 +57,13 @@ namespace playerAndJump
                 Destroy(collision.gameObject);
                 
             }
+
+            if (collision.gameObject.tag == "flyDamage")
+            {
+                Damage(15);
+            }
+
+
         }
 
 

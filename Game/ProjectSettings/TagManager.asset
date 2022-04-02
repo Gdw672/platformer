@@ -18,6 +18,7 @@ TagManager:
   - airFlow
   - boxOfPatrons
   - wall
+  - flyDamage
   layers:
   - Default
   - TransparentFX

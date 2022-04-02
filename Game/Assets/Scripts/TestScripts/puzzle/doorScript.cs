@@ -63,7 +63,6 @@ public class doorScript : MonoBehaviour
         
         allChildPos = new Vector2[] { objPos1, objPoos2, objPos3 };
 
-
         for (int i = 0; i <= 2; i++)
         {
             allChildPos[i] = allChilds[i].transform.position;

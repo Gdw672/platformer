@@ -30,12 +30,12 @@ namespace playerAndJump
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "enemy" && collision.gameObject.transform.position.x < gameObject.transform.position.x)
+            if ((collision.gameObject.tag == "enemy" || collision.gameObject.tag == "flyDamage")  && collision.gameObject.transform.position.x < gameObject.transform.position.x)
             {
                 impulse(impulseR);
             }
 
-            if (collision.gameObject.tag == "enemy" && collision.gameObject.transform.position.x > gameObject.transform.position.x)
+            if ((collision.gameObject.tag == "enemy" || collision.gameObject.tag == "flyDamage") && collision.gameObject.transform.position.x > gameObject.transform.position.x)
             {
                 impulse(impulseL);
             }

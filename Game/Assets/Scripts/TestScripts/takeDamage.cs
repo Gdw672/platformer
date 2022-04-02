@@ -53,6 +53,7 @@ namespace playerAndJump
                 Damage(25);
             }
            
+
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
