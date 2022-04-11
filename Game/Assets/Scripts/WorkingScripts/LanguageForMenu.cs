@@ -2,37 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class LanguageForMenu : MonoBehaviour
 {
 
 
-    public Sprite playRus;
-
-    public Sprite playEng;
-
-    public Sprite saveRus;
-
-    public Sprite saveEng;
-
-    public Sprite exitRus;
-
-    public Sprite exitEng;
-
-    private Button play;
-
-    private Button save;
-
-    private Button exit;
-
+    TMP_Text play, save, exit;
 
     void Start()
     {
-        play = GameObject.Find("Play").GetComponent<Button>();
+        play = GameObject.Find("Play").transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
 
-        save = GameObject.Find("Save").GetComponent<Button>();
+        save = GameObject.Find("Save").transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
 
-        exit = GameObject.Find("Exit").GetComponent<Button>();
-
+        exit = GameObject.Find("Exit").transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
+     
         LanguageScript langeageSetting = new LanguageScript();
 
         langeageSetting.loadLanguage();
@@ -41,24 +25,23 @@ public class LanguageForMenu : MonoBehaviour
 
         if (LanguageScript.testLanguage == 1)
         {
-            play.image.sprite = playEng;
+            play.text = "PLAY";
 
-            save.image.sprite = saveEng;
+            save.text = "SAVE";
 
-            exit.image.sprite = exitEng;
+            exit.text = "EXIT";
+
+
+            
         }
         else
         {
-            play.image.sprite = playRus;
+            play.text = "»√–¿“‹";
 
-            save.image.sprite = saveRus;
+            save.text = "—Œ’–";
 
-            exit.image.sprite = exitRus;
+            exit.text = "¬€’Œƒ";
         }
 
-    }
-
-    void Update()
-    {
     }
 }

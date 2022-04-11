@@ -16,13 +16,15 @@ namespace playerAndJump
         {
             playerPatr = player.GetComponent<playerCreatePatrons>();
             sumPatr = GetComponent<TMP_Text>();
-
         }
+
+
 
 
         private void Update()
         {
             sumPatr.text = playerPatr.sumOfPatrons.ToString();
+
         }
 
 
