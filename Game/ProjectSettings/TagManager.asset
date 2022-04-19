@@ -19,6 +19,7 @@ TagManager:
   - boxOfPatrons
   - wall
   - flyDamage
+  - mimicDamage
   layers:
   - Default
   - TransparentFX
