@@ -17,7 +17,7 @@ public class mimicBehavior : MonoBehaviour
     internal void startAgroAndAttack()
     {
 
-        StartCoroutine(attack(randomGenerationInt(1, 4)));
+        StartCoroutine(attack(randomGenerationInt(2, 6)));
 
     }
   
@@ -36,15 +36,14 @@ public class mimicBehavior : MonoBehaviour
 
       IEnumerator attack(int time)
     {
-        if(isAgro == false)
-        {
+        
             yield return new WaitForSeconds(time);
             var damage = Instantiate(damageWave);
             damage.transform.SetParent(child.transform);
             damage.transform.position = gameObject.transform.GetChild(0).transform.position;
-            isAgro = true;
+            
 
-        }
+        
        
     } 
     static int randomGenerationInt(int firtst, int second)

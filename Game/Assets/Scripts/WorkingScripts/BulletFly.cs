@@ -70,7 +70,7 @@ namespace playerAndJump
         }
 
 
-      internal IEnumerator destroyFromTime(int second , GameObject gameObject)
+      internal IEnumerator destroyFromTime(float second , GameObject gameObject)
         {
             yield return new WaitForSeconds(second);
 

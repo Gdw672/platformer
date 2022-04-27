@@ -24,7 +24,7 @@ namespace playerAndJump
 
         void Damage(int damage)
         {
-           
+            print("damage to " + gameObject.name);
 
             hp -= damage;
 
