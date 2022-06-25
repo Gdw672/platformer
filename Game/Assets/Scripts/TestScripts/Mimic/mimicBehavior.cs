@@ -17,24 +17,30 @@ public class mimicBehavior : MonoBehaviour
     internal void startAgroAndAttack()
     {
 
-        StartCoroutine(attack(randomGenerationInt(2, 6)));
+        StartCoroutine(attack(randomGenerationInt(2, 4)));
 
     }
-  
-/*    private void FixedUpdate()
+    internal void stopAgroAndAttack()
     {
-        if(isAgro)
-        {
-            gameObject.transform.parent.gameObject.transform.localScale = new Vector3(gameObject.transform.parent.transform.localScale.x * Time.fixedDeltaTime * 51 , gameObject.transform.parent.transform.localScale.y , 1f);
 
+        StopAllCoroutines();
 
-            
-
-        }
     }
-*/
 
-      IEnumerator attack(int time)
+    /*    private void FixedUpdate()
+        {
+            if(isAgro)
+            {
+                gameObject.transform.parent.gameObject.transform.localScale = new Vector3(gameObject.transform.parent.transform.localScale.x * Time.fixedDeltaTime * 51 , gameObject.transform.parent.transform.localScale.y , 1f);
+
+
+
+
+            }
+        }
+    */
+
+    IEnumerator attack(int time)
     {
         
             yield return new WaitForSeconds(time);
