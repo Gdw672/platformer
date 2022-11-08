@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MENU.unity
     guid: d4de7cb5ab389ba4caa45d0dba9b0122
   - enabled: 1
+    path: Assets/Scenes/NovellaScene.unity
+    guid: 5b448473d5e9c5a41a7dc8c3a1b8e463
+  - enabled: 1
     path: Assets/Scenes/LVL1.unity
     guid: ea448681dbd2969458adab06325ebce8
   - enabled: 1
