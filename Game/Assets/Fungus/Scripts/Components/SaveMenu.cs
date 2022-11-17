@@ -240,7 +240,6 @@ namespace Fungus
         public virtual void Save()
         {
             var saveManager = FungusManager.Instance.SaveManager;
-
             if (saveManager.NumSavePoints > 0)
             {
                 PlayClickSound();
