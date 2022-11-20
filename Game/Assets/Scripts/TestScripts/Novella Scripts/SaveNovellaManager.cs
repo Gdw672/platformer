@@ -11,13 +11,13 @@ public class SaveNovellaManager : MonoBehaviour
     public SaveMenu saveMenu;
     public SaveData SD;
     public Text textLog;
-    public string LogFromJson;
-    public string saveFilePath;
+    internal string LogFromJson;
+    internal string saveFilePath;
 
 
     private void Awake()
     {
-      //  deleteSaves();
+        // deleteSaves();
         saveFilePath = Application.persistentDataPath + "/SaveLog.json";
         DontDestroyOnLoad(gameObject);
         LoadNovella();

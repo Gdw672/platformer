@@ -17,7 +17,7 @@ namespace playerAndJump
 
         private void Update()
         {
-         
+            Handheld.Vibrate();
             if (hp <= 0)
             {
                 SceneManager.LoadScene(0);
