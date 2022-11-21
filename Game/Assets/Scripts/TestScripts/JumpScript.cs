@@ -12,6 +12,7 @@ namespace playerAndJump
         wallAndPlayerReaction playerAndWall;
         Rigidbody2D player;
 
+        [SerializeField] internal float powerJump, powerWallJump;
         public static int sumJump;
         public static bool wasJump;
         int maxJump;
@@ -48,7 +49,7 @@ namespace playerAndJump
     
                   player.velocity = Vector2.zero;
 
-                  player.AddForce(new Vector2(0, 100) * 1.6f, ForceMode2D.Impulse);
+                  player.AddForce(new Vector2(0, 100) * powerJump, ForceMode2D.Impulse);
 
                   sumJump -= 1;
             
@@ -97,7 +98,7 @@ namespace playerAndJump
         {
             if (playerAndWall.wallIsRight)
             {
-                player.AddForce(new Vector2(-10, 0), ForceMode2D.Impulse);
+                player.AddForce(new Vector2(-10, 0) , ForceMode2D.Impulse);
             }
 
             if(playerAndWall.wallIsLeft)
@@ -120,7 +121,7 @@ namespace playerAndJump
             {
                 JerkScript.testRotation = 0;
 
-                player.AddForce(new Vector2(-20, 24) * 10f, ForceMode2D.Impulse);
+                player.AddForce(new Vector2(-20, 24) * powerWallJump, ForceMode2D.Impulse);
 
                 sumJump -= 1;
             }
@@ -129,7 +130,7 @@ namespace playerAndJump
             {
                 JerkScript.testRotation = 1;
 
-                player.AddForce(new Vector2(20, 24) * 10f, ForceMode2D.Impulse);
+                player.AddForce(new Vector2(20, 24) * powerWallJump, ForceMode2D.Impulse);
 
                 sumJump -= 1;
             }
