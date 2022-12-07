@@ -14,7 +14,7 @@ public class cameraScript : MonoBehaviour
 
 
 
-        gameObject.transform.position = new Vector3(player.transform.position.x, gameObject.transform.position.y, -2);
+        gameObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -2);
         
 
      

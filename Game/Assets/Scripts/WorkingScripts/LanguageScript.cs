@@ -89,24 +89,35 @@ public class LanguageScript : MonoBehaviour
 
     public void saveLanguage()
     {
-        save save = new save();
+        if (File.Exists(Application.persistentDataPath + "/saveLanguage.json"))
+        {
+            save save = new save();
 
-        save.saveLanguage = testLanguage;
+            save.saveLanguage = testLanguage;
 
-        string json = JsonUtility.ToJson(save);
+            string json = JsonUtility.ToJson(save);
 
-        File.WriteAllText(Application.persistentDataPath + "/saveLanguage.json", json);
+            File.WriteAllText(Application.persistentDataPath + "/saveLanguage.json", json);
+
+        }
+  
     }
 
    public void loadLanguage()
     {
-        save saveS = new save();
+       
 
-        string json = File.ReadAllText(Application.persistentDataPath +"/saveLanguage.json");
+        if (File.Exists(Application.persistentDataPath + "/saveLanguage.json"))
+        {
+            save saveS = new save();
+            string json = File.ReadAllText(Application.persistentDataPath + "/saveLanguage.json");
+            saveS = JsonUtility.FromJson<save>(json);
+            testLanguage = saveS.saveLanguage;
 
-        saveS = JsonUtility.FromJson<save>(json);
+        }
+        
 
-        testLanguage = saveS.saveLanguage;
+        
     }
 
     public void goToMEnu()

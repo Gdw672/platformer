@@ -17,6 +17,7 @@ namespace playerAndJump
 
         private void Update()
         {
+            if(hp <= 0)
             {
                 SceneManager.LoadScene(0);
 
