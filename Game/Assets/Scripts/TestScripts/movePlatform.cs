@@ -6,63 +6,44 @@ using UnityEngine;
 [SelectionBase]
 public class movePlatform : MonoBehaviour
 {
-
-    bool moveRight;
-    float speed = 3f;
-
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            coll.transform.parent = transform;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            coll.transform.parent = null;
-        }
-
-    }
-    private void Update()
-    {
-        if(moveRight)
-        {
-            transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
-        }
-        else
-        {
-            transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
-        }
-    }
-
+    [SerializeField] private float speedOfPlatform;
+    [SerializeField] private float distanceOfPlatform;
+    [SerializeField] private bool isVertical;
+    private Rigidbody2D rigidbodyOfPlatform;
+    private float platformPassed;
     private void Start()
     {
-        moveRight = false;
-
-        StartCoroutine(changeSide());
+        rigidbodyOfPlatform = GetComponent<Rigidbody2D>();
     }
 
-
-    IEnumerator changeSide()
+    private void FixedUpdate()
     {
-        yield return new WaitForSeconds(2f);
-
-        if(moveRight == true)
+        if (Mathf.Abs(platformPassed) < Mathf.Abs(distanceOfPlatform))
         {
-            moveRight = false;
+            if (!isVertical)
+                rigidbodyOfPlatform.transform.Translate(speedOfPlatform, 0, 0);
+            else
+                rigidbodyOfPlatform.transform.Translate(0, speedOfPlatform, 0);
+            platformPassed += speedOfPlatform;
         }
         else
         {
-            moveRight = true;
+            speedOfPlatform = -speedOfPlatform;
+            platformPassed = 0;
         }
-
-        StartCoroutine(changeSide());
-        
     }
-
-    
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.parent = transform;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.parent = null;
+        }
+    }
 }

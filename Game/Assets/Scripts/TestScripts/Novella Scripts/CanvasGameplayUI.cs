@@ -10,6 +10,7 @@ public class CanvasGameplayUI : MonoBehaviour
     {
         canvasGameplayUI = this;
         canvas = canvasGameplayUI.GetComponent<Canvas>();
+        GameplayDialogue.sumOfDialog = 0;
     }
 
     protected CanvasGameplayUI() {}

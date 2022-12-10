@@ -6,7 +6,7 @@ using UnityEngine;
 namespace playerAndJump {
     public class playerReactionOnAirFlow : MonoBehaviour
     {
-
+        [SerializeField] internal float speedOfAir;
         Rigidbody2D player;
 
         private void Start()
@@ -18,7 +18,7 @@ namespace playerAndJump {
         {
             if (collision.gameObject.tag == "airFlow" && (JerkScript.isJerk == false))
             {
-                                player.velocity = new Vector2(0, 5);
+                                player.velocity = new Vector2(0, speedOfAir);
             }
         }
 
@@ -26,7 +26,7 @@ namespace playerAndJump {
         {
             if (collision.gameObject.tag == "airFlow" && JerkScript.isJerk == false)
             {
-                player.velocity = new Vector2(0, 5);
+                player.velocity = new Vector2(0, speedOfAir);
             }
         }
 
