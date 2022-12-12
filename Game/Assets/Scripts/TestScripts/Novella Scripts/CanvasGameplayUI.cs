@@ -1,20 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class CanvasGameplayUI : MonoBehaviour
+using UnityEngine.UI;
+namespace playerAndJump
 {
-    public static CanvasGameplayUI canvasGameplayUI;
-    internal Canvas canvas;
-    private void Awake()
+
+    public class CanvasGameplayUI : MonoBehaviour
     {
-        canvasGameplayUI = this;
-        canvas = canvasGameplayUI.GetComponent<Canvas>();
-        GameplayDialogue.sumOfDialog = 0;
+        [SerializeField] private Button Left, Right;
+        [SerializeField] private controllerScript controllerScript;
+        [SerializeField] private Rigidbody2D player;
+        public static CanvasGameplayUI canvasGameplayUI;
+        internal Canvas canvas;
+        private void Awake()
+        {
+            canvasGameplayUI = this;
+            canvas = canvasGameplayUI.GetComponent<Canvas>();
+            GameplayDialogue.sumOfDialog = 0;
+        }
+
+        private void Update()
+        {
+            print(moveRight.Pressed);
+        }
+        private void OnDisable()
+        {
+            Left.interactable = false;
+            Right.interactable = false;
+            moveLeft.Pressed = false;
+            moveRight.Pressed = false;
+        }
+        protected CanvasGameplayUI() { }
+
+
+
     }
-
-    protected CanvasGameplayUI() {}
-
- 
-
 }

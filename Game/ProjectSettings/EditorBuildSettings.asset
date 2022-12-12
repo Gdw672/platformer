@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameplayDialogue.unity
     guid: 68757cd0b35ffa847a09c5baf963be98
+  - enabled: 1
+    path: Assets/Scenes/NovellaScene2.unity
+    guid: fa49a2295680a2b46b7f90871d0888fc
   m_configObjects: {}

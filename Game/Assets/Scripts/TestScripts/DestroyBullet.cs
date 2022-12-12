@@ -10,6 +10,7 @@ namespace playerAndJump
 
         private void Awake()
         {
+            GetComponent<SpriteRenderer>().sortingOrder = 20;
             BulletFly bulletForCor = new BulletFly();
             StartCoroutine(bulletForCor.destroyFromTime(7, gameObject));
         }

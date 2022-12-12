@@ -6,9 +6,10 @@ namespace playerAndJump
 {
     public class controllerScript : MonoBehaviour
     {
+        [SerializeField] private Canvas canvas;
         moveLeft moveLeft = new moveLeft();
         moveRight moveRight = new moveRight();
-        Rigidbody2D player;
+       internal Rigidbody2D player;
         
         public void downLeft()
         {
@@ -52,12 +53,12 @@ namespace playerAndJump
         {
             
 
-            if (moveLeft.Pressed && gameObject != null)
+            if (moveLeft.Pressed && gameObject != null && canvas.isActiveAndEnabled)
             {
                 gameObject.transform.Translate(-10f * Time.fixedDeltaTime, 0, 0);
             }
 
-            if(moveRight.Pressed && gameObject != null)
+            if(moveRight.Pressed && gameObject != null && canvas.isActiveAndEnabled)
             {
 
                 gameObject.transform.Translate(10f * Time.fixedDeltaTime, 0, 0);
