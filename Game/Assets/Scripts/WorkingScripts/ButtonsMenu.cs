@@ -20,7 +20,7 @@ public class ButtonsMenu : MonoBehaviour
 
    public void goToSettings()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("SETTING");
 
 
     }
